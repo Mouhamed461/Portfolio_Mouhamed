@@ -4,84 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO — Nom du projet 3 — TODO Prénom Nom</title>
-    <link href="./output.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-white text-slate-900 flex flex-col">
-    <header class="border-b border-slate-200">
-        <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-            <a href="./index.html" class="text-lg font-semibold tracking-tight">TODO — Prénom Nom</a>
-            <nav aria-label="Navigation principale" class="hidden md:block">
-                <ul class="flex gap-8 text-sm font-medium text-slate-600">
-                    <li><a href="./index.html" class="hover:text-slate-900">Accueil</a></li>
-                    <li><a href="./realisations.html" class="text-slate-900 font-semibold" aria-current="page">Réalisations</a></li>
-                    <li><a href="./apropos.html" class="hover:text-slate-900">À propos</a></li>
-                    <li><a href="./contact.html" class="hover:text-slate-900">Contact</a></li>
+<body>
+    <header class="site-header">
+        <div class="header-inner container">
+            <a href="./index.html" class="logo">TODO — Prénom Nom</a>
+            <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu">
+                <span class="menu-toggle-bar"></span>
+                <span class="menu-toggle-bar"></span>
+                <span class="menu-toggle-bar"></span>
+            </button>
+            <nav class="site-nav" id="primary-nav" aria-label="Navigation principale">
+                <ul class="nav-list">
+                    <li><a href="./index.html" class="nav-link">Accueil</a></li>
+                    <li><a href="./realisations.html" class="nav-link active" aria-current="page">Réalisations</a></li>
+                    <li><a href="./apropos.html" class="nav-link">À propos</a></li>
+                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
-            <details class="relative md:hidden">
-                <summary class="list-none cursor-pointer rounded-md border border-slate-300 px-3 py-2 text-sm">Menu</summary>
-                <ul class="absolute right-0 z-10 mt-2 w-48 rounded-md border border-slate-200 bg-white p-2 text-sm font-medium text-slate-600 shadow-lg">
-                    <li><a href="./index.html" class="block rounded px-3 py-2 hover:bg-slate-50">Accueil</a></li>
-                    <li><a href="./realisations.html" class="block rounded px-3 py-2 font-semibold text-slate-900" aria-current="page">Réalisations</a></li>
-                    <li><a href="./apropos.html" class="block rounded px-3 py-2 hover:bg-slate-50">À propos</a></li>
-                    <li><a href="./contact.html" class="block rounded px-3 py-2 hover:bg-slate-50">Contact</a></li>
-                </ul>
-            </details>
         </div>
     </header>
 
-    <main class="flex-1">
-        <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-            <a href="./realisations.html" class="text-sm text-slate-500 hover:text-slate-900">&larr; Retour aux réalisations</a>
-            <h1 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">TODO — Nom du projet 3</h1>
+    <main>
+        <section class="page-header container-narrow">
+            <a href="./realisations.html" class="back-link">&larr; Retour aux réalisations</a>
+            <h1 class="page-title" style="margin-top: 1rem;">TODO — Nom du projet 3</h1>
 
-            <div class="mt-8 flex aspect-video w-full items-center justify-center rounded-lg bg-slate-100 text-sm text-slate-400">
+            <div class="project-hero-media">
                 Visuel principal TODO
             </div>
 
-            <div class="mt-10 grid gap-8 sm:grid-cols-2">
+            <div class="meta-grid">
                 <div>
-                    <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Contexte</h2>
-                    <p class="mt-2 text-slate-700">TODO — pourquoi ce projet, pour qui, quelle contrainte</p>
+                    <h2 class="meta-label">Contexte</h2>
+                    <p class="meta-value">TODO — pourquoi ce projet, pour qui, quelle contrainte</p>
                 </div>
                 <div>
-                    <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Mon rôle</h2>
-                    <p class="mt-2 text-slate-700">TODO — rôle exact (design, intégration, code, gestion...)</p>
+                    <h2 class="meta-label">Mon rôle</h2>
+                    <p class="meta-value">TODO — rôle exact (design, intégration, code, gestion...)</p>
                 </div>
                 <div>
-                    <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Résultat</h2>
-                    <p class="mt-2 text-slate-700">TODO — livré, note, retour, apprentissage</p>
+                    <h2 class="meta-label">Résultat</h2>
+                    <p class="meta-value">TODO — livré, note, retour, apprentissage</p>
                 </div>
                 <div>
-                    <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Outils / techniques</h2>
-                    <p class="mt-2 text-slate-700">TODO (optionnel)</p>
+                    <h2 class="meta-label">Outils / techniques</h2>
+                    <p class="meta-value">TODO (optionnel)</p>
                 </div>
             </div>
 
-            <div class="mt-12">
-                <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Galerie</h2>
-                <div class="mt-4 grid gap-4 sm:grid-cols-2">
-                    <div class="flex aspect-[4/3] items-center justify-center rounded-lg bg-slate-100 text-sm text-slate-400">Visuel TODO</div>
-                    <div class="flex aspect-[4/3] items-center justify-center rounded-lg bg-slate-100 text-sm text-slate-400">Visuel TODO</div>
+            <div class="gallery-section">
+                <h2 class="meta-label">Galerie</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">Visuel TODO</div>
+                    <div class="gallery-item">Visuel TODO</div>
                 </div>
             </div>
 
-            <nav class="mt-16 flex items-center justify-between text-sm font-medium text-slate-600" aria-label="Navigation entre projets">
-                <a href="./projet-2.html" class="hover:text-slate-900">&larr; Projet précédent</a>
+            <nav class="project-pagination" aria-label="Navigation entre projets">
+                <a href="./projet-2.html">&larr; Projet précédent</a>
                 <span></span>
             </nav>
         </section>
     </main>
 
-    <footer class="mt-24 border-t border-slate-200">
-        <div class="mx-auto flex max-w-5xl flex-col justify-between gap-4 px-4 py-10 text-sm text-slate-500 sm:flex-row sm:px-6 lg:px-8">
+    <footer class="site-footer">
+        <div class="footer-inner container">
             <p>&copy; 2026 TODO Prénom Nom</p>
-            <ul class="flex flex-wrap gap-6">
-                <li><a href="mailto:TODO@example.com" class="hover:text-slate-900">TODO@example.com</a></li>
-                <li><a href="#" class="hover:text-slate-900">LinkedIn (TODO)</a></li>
-                <li><a href="#" class="hover:text-slate-900">GitHub (TODO, optionnel)</a></li>
+            <ul class="footer-links">
+                <li><a href="mailto:TODO@example.com">TODO@example.com</a></li>
+                <li><a href="#">LinkedIn (TODO)</a></li>
+                <li><a href="#">GitHub (TODO, optionnel)</a></li>
             </ul>
         </div>
     </footer>
+
+    <script src="./js/main.js" defer></script>
 </body>
 </html>
