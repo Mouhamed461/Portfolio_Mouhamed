@@ -3,62 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO — Nom du projet 1 — TODO Prénom Nom</title>
+    <title>Le Joola — Mouhamed Diouf</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="./css/styles.css" rel="stylesheet">
 </head>
 <body>
     <header class="site-header">
         <div class="header-inner container">
-            <a href="./index.html" class="logo">TODO — Prénom Nom</a>
-            <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu">
-                <span class="menu-toggle-bar"></span>
-                <span class="menu-toggle-bar"></span>
-                <span class="menu-toggle-bar"></span>
-            </button>
+            <a href="./index.html" class="logo">Mouhamed Diouf</a>
             <nav class="site-nav" id="primary-nav" aria-label="Navigation principale">
                 <ul class="nav-list">
                     <li><a href="./index.html" class="nav-link">Accueil</a></li>
                     <li><a href="./realisations.html" class="nav-link active" aria-current="page">Réalisations</a></li>
                     <li><a href="./apropos.html" class="nav-link">À propos</a></li>
-                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
+            <div class="header-actions">
+                <a href="./index.html#contact" class="header-icon-btn" aria-label="Aller au contact"><svg class="icon"><use href="./assets/icons.svg#icon-contact"></use></svg></a>
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu">
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                </button>
+            </div>
         </div>
     </header>
 
     <main>
         <section class="page-header container-narrow">
             <a href="./realisations.html" class="back-link">&larr; Retour aux réalisations</a>
-            <h1 class="page-title" style="margin-top: 1rem;">TODO — Nom du projet 1</h1>
+            <h1 class="page-title" style="margin-top: 1rem;">Le Joola</h1>
 
-            <div class="project-hero-media">
-                Visuel principal TODO
+            <div class="project-hero-media media-frame reveal">
+                <iframe src="https://www.youtube.com/embed/llalkwZeLK4?autoplay=1&mute=1&loop=1&playlist=llalkwZeLK4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3" title="Le Joola — Mouhamed Diouf" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <div class="hero-video-mask" aria-hidden="true"></div>
             </div>
+            <a href="https://youtu.be/llalkwZeLK4" target="_blank" rel="noopener" class="video-source-link">Voir sur YouTube &nearr;</a>
 
-            <div class="meta-grid">
+            <div class="meta-grid reveal">
                 <div>
                     <h2 class="meta-label">Contexte</h2>
-                    <p class="meta-value">TODO — pourquoi ce projet, pour qui, quelle contrainte</p>
+                    <p class="meta-value">Retracer le naufrage du Joola (2002), l'une des plus grandes tragédies maritimes de l'histoire du Sénégal, à travers un court documentaire en motion design. Un projet mené en solo, de la recherche historique jusqu'à la livraison finale.</p>
                 </div>
                 <div>
                     <h2 class="meta-label">Mon rôle</h2>
-                    <p class="meta-value">TODO — rôle exact (design, intégration, code, gestion...)</p>
+                    <p class="meta-value">Scénarisation, recherche historique, dérushage, création et assemblage des visuels, montage et édition finale. J'ai porté l'ensemble du projet seul.</p>
                 </div>
                 <div>
                     <h2 class="meta-label">Résultat</h2>
-                    <p class="meta-value">TODO — livré, note, retour, apprentissage</p>
+                    <p class="meta-value">Un court métrage qui m'a appris à porter seul un projet documentaire sensible, de la recherche à la narration visuelle, tout en restant juste avec le sujet traité.</p>
                 </div>
                 <div>
                     <h2 class="meta-label">Outils / techniques</h2>
-                    <p class="meta-value">TODO (optionnel)</p>
+                    <ul class="tools-tags">
+                        <li>Recherche documentaire</li>
+                        <li>Scénarisation</li>
+                        <li>Motion design</li>
+                        <li>Montage vidéo</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="gallery-section">
                 <h2 class="meta-label">Galerie</h2>
                 <div class="gallery-grid">
-                    <div class="gallery-item">Visuel TODO</div>
-                    <div class="gallery-item">Visuel TODO</div>
+                    <div class="gallery-item media-frame media-frame--video" data-ratio="4:3">Visuel TODO</div>
+                    <div class="gallery-item media-frame media-frame--video" data-ratio="4:3">Visuel TODO</div>
                 </div>
             </div>
 
@@ -71,11 +84,10 @@
 
     <footer class="site-footer">
         <div class="footer-inner container">
-            <p>&copy; 2026 TODO Prénom Nom</p>
-            <ul class="footer-links">
-                <li><a href="mailto:TODO@example.com">TODO@example.com</a></li>
-                <li><a href="#">LinkedIn (TODO)</a></li>
-                <li><a href="#">GitHub (TODO, optionnel)</a></li>
+            <p>&copy; 2026 Mouhamed Diouf</p>
+            <ul class="social-links">
+                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=dioufmouhamed461@gmail.com" class="social-link" aria-label="Courriel" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-email"></use></svg></a></li>
+                <li><a href="https://github.com/Mouhamed461" class="social-link" aria-label="GitHub" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-github"></use></svg></a></li>
             </ul>
         </div>
     </footer>

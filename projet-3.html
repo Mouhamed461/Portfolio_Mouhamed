@@ -3,62 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO — Nom du projet 3 — TODO Prénom Nom</title>
+    <title>Chocs &amp; Marées — Mouhamed Diouf</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="./css/styles.css" rel="stylesheet">
 </head>
 <body>
     <header class="site-header">
         <div class="header-inner container">
-            <a href="./index.html" class="logo">TODO — Prénom Nom</a>
-            <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu">
-                <span class="menu-toggle-bar"></span>
-                <span class="menu-toggle-bar"></span>
-                <span class="menu-toggle-bar"></span>
-            </button>
+            <a href="./index.html" class="logo">Mouhamed Diouf</a>
             <nav class="site-nav" id="primary-nav" aria-label="Navigation principale">
                 <ul class="nav-list">
                     <li><a href="./index.html" class="nav-link">Accueil</a></li>
                     <li><a href="./realisations.html" class="nav-link active" aria-current="page">Réalisations</a></li>
                     <li><a href="./apropos.html" class="nav-link">À propos</a></li>
-                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
+            <div class="header-actions">
+                <a href="./index.html#contact" class="header-icon-btn" aria-label="Aller au contact"><svg class="icon"><use href="./assets/icons.svg#icon-contact"></use></svg></a>
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu">
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                </button>
+            </div>
         </div>
     </header>
 
     <main>
-        <section class="page-header container-narrow">
+        <section class="page-header container">
             <a href="./realisations.html" class="back-link">&larr; Retour aux réalisations</a>
-            <h1 class="page-title" style="margin-top: 1rem;">TODO — Nom du projet 3</h1>
+            <h1 class="page-title" style="margin-top: 1rem;">Chocs &amp; Marées</h1>
 
-            <div class="project-hero-media">
-                Visuel principal TODO
+            <div class="ui-mosaic">
+                <div class="ui-mosaic-screen ui-mosaic-screen--1 reveal">
+                    <img src="./assets/images/chocs-marees/accueil.png" alt="Écran d'accueil : programme du jour et accès rapide">
+                </div>
+                <div class="ui-mosaic-screen ui-mosaic-screen--2 reveal">
+                    <img src="./assets/images/chocs-marees/splash.png" alt="Écran de démarrage de l'application">
+                </div>
+                <div class="ui-mosaic-screen ui-mosaic-screen--3 reveal">
+                    <img src="./assets/images/chocs-marees/detail-projection.png" alt="Détail d'une projection">
+                </div>
+                <div class="ui-mosaic-screen ui-mosaic-screen--4 reveal">
+                    <img src="./assets/images/chocs-marees/chalet-du-parc.png" alt="Détail d'un hébergement, Chalet du Parc">
+                </div>
+                <div class="ui-mosaic-screen ui-mosaic-screen--5 reveal">
+                    <img src="./assets/images/chocs-marees/confirmation-billet.png" alt="Confirmation de billet avec code QR">
+                </div>
             </div>
 
-            <div class="meta-grid">
+            <div class="meta-grid reveal">
                 <div>
                     <h2 class="meta-label">Contexte</h2>
-                    <p class="meta-value">TODO — pourquoi ce projet, pour qui, quelle contrainte</p>
+                    <p class="meta-value">Concevoir l'application mobile complète du festival Chocs &amp; Marées, un festival de films documentaires nature en Gaspésie : programmation des projections, billetterie, réservation d'hébergement, carte des sites et espace communauté.</p>
                 </div>
                 <div>
                     <h2 class="meta-label">Mon rôle</h2>
-                    <p class="meta-value">TODO — rôle exact (design, intégration, code, gestion...)</p>
+                    <p class="meta-value">Conception UX/UI complète : structure des fonctionnalités, parcours utilisateur (programmation, billetterie, réservation, paiement) et interfaces, du splash screen jusqu'à la confirmation.</p>
                 </div>
                 <div>
                     <h2 class="meta-label">Résultat</h2>
-                    <p class="meta-value">TODO — livré, note, retour, apprentissage</p>
+                    <p class="meta-value">Une maquette d'application complète et cohérente sur Figma, pensée comme un vrai produit : de la découverte du programme jusqu'au paiement et à la communauté des festivaliers.</p>
                 </div>
                 <div>
                     <h2 class="meta-label">Outils / techniques</h2>
-                    <p class="meta-value">TODO (optionnel)</p>
+                    <ul class="tools-tags">
+                        <li>Figma</li>
+                        <li>Wireframes</li>
+                        <li>Design d'interface</li>
+                        <li>Prototypage</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="gallery-section">
                 <h2 class="meta-label">Galerie</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item">Visuel TODO</div>
-                    <div class="gallery-item">Visuel TODO</div>
+                <div class="ui-screens-grid">
+                    <div class="ui-screen">
+                        <img src="./assets/images/chocs-marees/accueil.png" alt="Écran d'accueil : programme du jour et accès rapide aux billets, séjours et communauté">
+                    </div>
+                    <div class="ui-screen">
+                        <img src="./assets/images/chocs-marees/detail-projection.png" alt="Détail d'une projection : synopsis, réalisateur et séances disponibles">
+                    </div>
+                    <div class="ui-screen">
+                        <img src="./assets/images/chocs-marees/confirmation-billet.png" alt="Écran de confirmation avec billet et code QR après l'achat">
+                    </div>
+                    <div class="ui-screen">
+                        <img src="./assets/images/chocs-marees/chalet-du-parc.png" alt="Détail d'un hébergement : Chalet du Parc, avec photos et équipements">
+                    </div>
+                    <div class="ui-screen">
+                        <img src="./assets/images/chocs-marees/communaute.png" alt="Fil de la communauté : publications et commentaires des festivaliers">
+                    </div>
                 </div>
             </div>
 
@@ -71,11 +109,10 @@
 
     <footer class="site-footer">
         <div class="footer-inner container">
-            <p>&copy; 2026 TODO Prénom Nom</p>
-            <ul class="footer-links">
-                <li><a href="mailto:TODO@example.com">TODO@example.com</a></li>
-                <li><a href="#">LinkedIn (TODO)</a></li>
-                <li><a href="#">GitHub (TODO, optionnel)</a></li>
+            <p>&copy; 2026 Mouhamed Diouf</p>
+            <ul class="social-links">
+                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=dioufmouhamed461@gmail.com" class="social-link" aria-label="Courriel" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-email"></use></svg></a></li>
+                <li><a href="https://github.com/Mouhamed461" class="social-link" aria-label="GitHub" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-github"></use></svg></a></li>
             </ul>
         </div>
     </footer>

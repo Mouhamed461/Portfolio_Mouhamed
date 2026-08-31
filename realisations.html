@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Réalisations — TODO Prénom Nom</title>
+    <title>Réalisations — Mouhamed Diouf</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="./css/styles.css" rel="stylesheet">
 </head>
 <body>
     <header class="site-header">
         <div class="header-inner container">
-            <a href="./index.html" class="logo">TODO — Prénom Nom</a>
-            <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu">
-                <span class="menu-toggle-bar"></span>
-                <span class="menu-toggle-bar"></span>
-                <span class="menu-toggle-bar"></span>
-            </button>
+            <a href="./index.html" class="logo">Mouhamed Diouf</a>
             <nav class="site-nav" id="primary-nav" aria-label="Navigation principale">
                 <ul class="nav-list">
                     <li><a href="./index.html" class="nav-link">Accueil</a></li>
                     <li><a href="./realisations.html" class="nav-link active" aria-current="page">Réalisations</a></li>
                     <li><a href="./apropos.html" class="nav-link">À propos</a></li>
-                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
+            <div class="header-actions">
+                <a href="./index.html#contact" class="header-icon-btn" aria-label="Aller au contact"><svg class="icon"><use href="./assets/icons.svg#icon-contact"></use></svg></a>
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu">
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -30,51 +36,64 @@
         <section class="page-header container">
             <h1 class="page-title">Réalisations</h1>
             <p class="section-intro">
-                <!-- TODO: phrase d'intro courte sur cette section (optionnel) -->
-                TODO — intro courte (optionnel)
+                Une sélection de projets en vidéo, son et interactivité.
             </p>
         </section>
 
-        <section class="section container">
-            <div class="project-grid">
-                <article class="project-card">
-                    <a href="./projet-1.html">
-                        <div class="project-card-media">
-                            Visuel TODO
-                        </div>
-                        <h2 class="project-card-title">TODO — Nom du projet 1</h2>
-                        <p class="project-card-desc">TODO — contexte en une phrase</p>
-                    </a>
-                </article>
-                <article class="project-card">
-                    <a href="./projet-2.html">
-                        <div class="project-card-media">
-                            Visuel TODO
-                        </div>
-                        <h2 class="project-card-title">TODO — Nom du projet 2</h2>
-                        <p class="project-card-desc">TODO — contexte en une phrase</p>
-                    </a>
-                </article>
-                <article class="project-card">
-                    <a href="./projet-3.html">
-                        <div class="project-card-media">
-                            Visuel TODO
-                        </div>
-                        <h2 class="project-card-title">TODO — Nom du projet 3</h2>
-                        <p class="project-card-desc">TODO — contexte en une phrase</p>
-                    </a>
-                </article>
-            </div>
-        </section>
+        <div class="project-showcase">
+            <article class="showcase-panel reveal">
+                <div class="showcase-media media-frame">
+                    <img src="./assets/images/le-joola/thumbnail.jpg" alt="Image tirée du documentaire Le Joola, avec le bilan officiel du naufrage">
+                </div>
+                <div class="showcase-overlay"></div>
+                <div class="showcase-content container">
+                    <span class="showcase-index">01 / 03</span>
+                    <h2 class="showcase-title">Le Joola</h2>
+                    <p class="showcase-desc">Court métrage documentaire sur le naufrage du Joola, l'une des plus grandes tragédies maritimes de l'histoire du Sénégal.</p>
+                    <a href="./projet-1.html" class="btn btn-primary showcase-link">Voir le projet &rarr;</a>
+                </div>
+                <span class="showcase-scroll-hint">Continuer à défiler</span>
+            </article>
+
+            <article class="showcase-panel reveal">
+                <div class="showcase-media media-frame">
+                    <img src="./assets/images/tuyo/thumbnail.gif" alt="Image tirée du montage Tuyo">
+                </div>
+                <div class="showcase-overlay"></div>
+                <div class="showcase-content container">
+                    <span class="showcase-index">02 / 03</span>
+                    <h2 class="showcase-title">Tuyo</h2>
+                    <p class="showcase-desc">Exercice de montage d'une minute : recomposer des séquences de trois films différents en une seule histoire rythmée.</p>
+                    <a href="./projet-2.html" class="btn btn-primary showcase-link">Voir le projet &rarr;</a>
+                </div>
+                <span class="showcase-scroll-hint">Continuer à défiler</span>
+            </article>
+
+            <article class="showcase-panel reveal">
+                <div class="showcase-media media-frame">
+                    <div class="card-slideshow" aria-hidden="true">
+                        <img src="./assets/images/chocs-marees/splash.png" alt="">
+                        <img src="./assets/images/chocs-marees/detail-projection.png" alt="">
+                        <img src="./assets/images/chocs-marees/communaute.png" alt="">
+                    </div>
+                </div>
+                <div class="showcase-overlay"></div>
+                <div class="showcase-content container">
+                    <span class="showcase-index">03 / 03</span>
+                    <h2 class="showcase-title">Chocs &amp; Marées</h2>
+                    <p class="showcase-desc">Application mobile complète pour un festival de films documentaires en Gaspésie : programmation, billetterie, hébergement et communauté.</p>
+                    <a href="./projet-3.html" class="btn btn-primary showcase-link">Voir le projet &rarr;</a>
+                </div>
+            </article>
+        </div>
     </main>
 
     <footer class="site-footer">
         <div class="footer-inner container">
-            <p>&copy; 2026 TODO Prénom Nom</p>
-            <ul class="footer-links">
-                <li><a href="mailto:TODO@example.com">TODO@example.com</a></li>
-                <li><a href="#">LinkedIn (TODO)</a></li>
-                <li><a href="#">GitHub (TODO, optionnel)</a></li>
+            <p>&copy; 2026 Mouhamed Diouf</p>
+            <ul class="social-links">
+                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=dioufmouhamed461@gmail.com" class="social-link" aria-label="Courriel" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-email"></use></svg></a></li>
+                <li><a href="https://github.com/Mouhamed461" class="social-link" aria-label="GitHub" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-github"></use></svg></a></li>
             </ul>
         </div>
     </footer>

@@ -3,60 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À propos — TODO Prénom Nom</title>
+    <title>À propos — Mouhamed Diouf</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="./css/styles.css" rel="stylesheet">
 </head>
 <body>
     <header class="site-header">
         <div class="header-inner container">
-            <a href="./index.html" class="logo">TODO — Prénom Nom</a>
-            <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu">
-                <span class="menu-toggle-bar"></span>
-                <span class="menu-toggle-bar"></span>
-                <span class="menu-toggle-bar"></span>
-            </button>
+            <a href="./index.html" class="logo">Mouhamed Diouf</a>
             <nav class="site-nav" id="primary-nav" aria-label="Navigation principale">
                 <ul class="nav-list">
                     <li><a href="./index.html" class="nav-link">Accueil</a></li>
                     <li><a href="./realisations.html" class="nav-link">Réalisations</a></li>
                     <li><a href="./apropos.html" class="nav-link active" aria-current="page">À propos</a></li>
-                    <li><a href="./contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
+            <div class="header-actions">
+                <a href="#contact" class="header-icon-btn" aria-label="Aller au contact"><svg class="icon"><use href="./assets/icons.svg#icon-contact"></use></svg></a>
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Ouvrir le menu">
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                </button>
+            </div>
         </div>
     </header>
 
     <main>
-        <section class="page-header container-narrow">
+        <section class="page-header container">
             <h1 class="page-title">À propos</h1>
 
-            <div class="about-layout">
+            <p class="lead-quote reveal">Vidéo, son, un peu d'UX/UI : je construis des histoires qui touchent, du dérushage à la livraison finale.</p>
+
+            <div class="about-layout reveal">
                 <div class="about-photo-wrap">
-                    <div class="about-photo">
-                        Photo TODO (optionnel)
+                    <div class="about-photo media-frame">
+                        <img src="./assets/images/mouhamed-diouf.jpg" alt="Portrait de Mouhamed Diouf">
                     </div>
                 </div>
                 <div class="about-text">
-                    <p><!-- TODO: comment tu es arrivé au multimédia --></p>
-                    <p><!-- TODO: ce que tu aimes faire concrètement --></p>
-                    <p><!-- TODO: ce qui te distingue --></p>
-                    <p><!-- TODO: ce que tu cherches après le DEC --></p>
+                    <p>Après mon baccalauréat, je me suis d'abord dirigé vers le développement web front-end. Mais je cherchais un champ plus vaste, qui réunit plusieurs facettes de la création numérique. Le choix du multimédia s'est fait naturellement.</p>
+                    <p>J'aime explorer de nouvelles choses et changer de cadre par rapport à ce qu'on connaît déjà. Sortir des sentiers battus, c'est ce qui me fait avancer dans mes projets.</p>
+                    <p>Ma polyvalence : je suis à l'aise en vidéo, en son et en intégration web. Je peux comprendre un projet dans son ensemble, de la scénarisation jusqu'à la livraison finale.</p>
+                    <p>Après le DEC, je veux explorer d'autres facettes du multimédia, comme le web marketing, et continuer à élargir mon champ de compétences.</p>
                 </div>
             </div>
 
             <div class="about-cv">
-                <a href="./assets/cv/TODO-prenom-nom-cv.pdf" class="btn btn-primary">Télécharger mon CV (PDF)</a>
+                <a href="./assets/cv/CV_Mouhamed_Diouf.pdf" class="btn btn-primary" download>Télécharger mon CV (PDF)</a>
+            </div>
+        </section>
+
+        <section class="section container">
+            <h2 class="section-title reveal"><span class="section-label">01</span>Compétences.</h2>
+            <div class="skills-grid">
+                <div class="skills-col reveal">
+                    <h3 class="skills-col-title">Vidéo</h3>
+                    <ul class="skills-list">
+                        <li>Tournage</li>
+                        <li>Dérushage</li>
+                        <li>Montage</li>
+                        <li>Motion design</li>
+                    </ul>
+                </div>
+                <div class="skills-col reveal">
+                    <h3 class="skills-col-title">Son</h3>
+                    <ul class="skills-list">
+                        <li>Prise de son</li>
+                        <li>Mixage</li>
+                        <li>Rythme et trame sonore</li>
+                    </ul>
+                </div>
+                <div class="skills-col reveal">
+                    <h3 class="skills-col-title">UX/UI</h3>
+                    <ul class="skills-list">
+                        <li>Recherche UX</li>
+                        <li>Wireframes</li>
+                        <li>Design d'interface</li>
+                    </ul>
+                </div>
+                <div class="skills-col reveal">
+                    <h3 class="skills-col-title">Savoir-être</h3>
+                    <ul class="skills-list">
+                        <li>Curiosité</li>
+                        <li>Travail d'équipe</li>
+                        <li>Autonomie</li>
+                        <li>Sens du récit</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container">
+            <h2 class="section-title reveal"><span class="section-label">02</span>Logiciels.</h2>
+            <div class="skills-grid">
+                <div class="skills-col reveal">
+                    <h3 class="skills-col-title">Vidéo</h3>
+                    <ul class="skills-list">
+                        <li>Premiere Pro</li>
+                        <li>DaVinci Resolve</li>
+                        <li>CapCut</li>
+                        <li>After Effects</li>
+                    </ul>
+                </div>
+                <div class="skills-col reveal">
+                    <h3 class="skills-col-title">Son</h3>
+                    <ul class="skills-list">
+                        <li>Audition</li>
+                        <li>Audacity</li>
+                    </ul>
+                </div>
+                <div class="skills-col reveal">
+                    <h3 class="skills-col-title">Design &amp; UX/UI</h3>
+                    <ul class="skills-list">
+                        <li>Figma</li>
+                        <li>Illustrator</li>
+                        <li>Canva</li>
+                    </ul>
+                </div>
+                <div class="skills-col reveal">
+                    <h3 class="skills-col-title">Intégration web</h3>
+                    <ul class="skills-list">
+                        <li>HTML</li>
+                        <li>CSS3</li>
+                        <li>Tailwind CSS</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>Vue</li>
+                        <li>WordPress</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-contact">
+            <div class="container-narrow">
+                <div class="contact-split">
+                    <div class="contact-split-col reveal">
+                        <h2 class="section-title"><span class="section-label">03</span>Me contacter</h2>
+                        <p class="contact-intro">
+                            Un projet en tête ou une question ? N'hésitez pas à me contacter.
+                        </p>
+                    </div>
+                    <ul class="contact-list reveal">
+                        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=dioufmouhamed461@gmail.com" class="contact-link" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-email"></use></svg> dioufmouhamed461@gmail.com</a></li>
+                        <li><a href="https://github.com/Mouhamed461" class="contact-link" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-github"></use></svg> github.com/Mouhamed461</a></li>
+                        <li><a href="tel:+15812327228" class="contact-link"><svg class="icon"><use href="./assets/icons.svg#icon-phone"></use></svg> +1 581 232 7228</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
         <div class="footer-inner container">
-            <p>&copy; 2026 TODO Prénom Nom</p>
-            <ul class="footer-links">
-                <li><a href="mailto:TODO@example.com">TODO@example.com</a></li>
-                <li><a href="#">LinkedIn (TODO)</a></li>
-                <li><a href="#">GitHub (TODO, optionnel)</a></li>
+            <p>&copy; 2026 Mouhamed Diouf</p>
+            <ul class="social-links">
+                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=dioufmouhamed461@gmail.com" class="social-link" aria-label="Courriel" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-email"></use></svg></a></li>
+                <li><a href="https://github.com/Mouhamed461" class="social-link" aria-label="GitHub" target="_blank" rel="noopener"><svg class="icon"><use href="./assets/icons.svg#icon-github"></use></svg></a></li>
             </ul>
         </div>
     </footer>
