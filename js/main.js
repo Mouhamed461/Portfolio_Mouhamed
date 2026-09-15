@@ -50,4 +50,29 @@ document.addEventListener("DOMContentLoaded", () => {
       revealElements.forEach((el) => observer.observe(el));
     }
   }
+
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const showcasePanels = document.querySelectorAll(".showcase-panel");
+  const filterEmpty = document.querySelector(".filter-empty");
+
+  if (filterButtons.length > 0 && showcasePanels.length > 0) {
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+        filterButtons.forEach((b) => b.classList.toggle("is-active", b === btn));
+
+        let visibleCount = 0;
+        showcasePanels.forEach((panel) => {
+          const categories = (panel.dataset.categories || "").split(" ");
+          const matches = filter === "all" || categories.includes(filter);
+          panel.classList.toggle("is-filtered-out", !matches);
+          if (matches) visibleCount += 1;
+        });
+
+        if (filterEmpty) {
+          filterEmpty.classList.toggle("is-visible", visibleCount === 0);
+        }
+      });
+    });
+  }
 });

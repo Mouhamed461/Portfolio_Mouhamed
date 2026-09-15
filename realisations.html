@@ -38,16 +38,27 @@
             <p class="section-intro">
                 Une sélection de projets en vidéo, son et interactivité.
             </p>
+            <div class="category-filter" role="group" aria-label="Filtrer par catégorie">
+                <button type="button" class="filter-btn is-active" data-filter="all">Tous</button>
+                <button type="button" class="filter-btn" data-filter="video">Vidéo</button>
+                <button type="button" class="filter-btn" data-filter="son">Son</button>
+                <button type="button" class="filter-btn" data-filter="ux-ui">UX/UI</button>
+                <button type="button" class="filter-btn" data-filter="web">Web</button>
+            </div>
         </section>
 
         <div class="project-showcase">
-            <article class="showcase-panel reveal">
+            <article class="showcase-panel reveal" data-categories="video son">
                 <div class="showcase-media media-frame">
                     <img src="./assets/images/le-joola/thumbnail.jpg" alt="Image tirée du documentaire Le Joola, avec le bilan officiel du naufrage">
                 </div>
                 <div class="showcase-overlay"></div>
                 <div class="showcase-content container">
                     <span class="showcase-index">01 / 03</span>
+                    <div class="category-tags">
+                        <span class="category-tag">Vidéo</span>
+                        <span class="category-tag">Son</span>
+                    </div>
                     <h2 class="showcase-title">Le Joola</h2>
                     <p class="showcase-desc">Court métrage documentaire sur le naufrage du Joola, l'une des plus grandes tragédies maritimes de l'histoire du Sénégal.</p>
                     <a href="./projet-1.html" class="btn btn-primary showcase-link">Voir le projet &rarr;</a>
@@ -55,13 +66,17 @@
                 <span class="showcase-scroll-hint">Continuer à défiler</span>
             </article>
 
-            <article class="showcase-panel reveal">
+            <article class="showcase-panel reveal" data-categories="video son">
                 <div class="showcase-media media-frame">
                     <img src="./assets/images/tuyo/thumbnail.gif" alt="Image tirée du montage Tuyo" loading="lazy" decoding="async">
                 </div>
                 <div class="showcase-overlay"></div>
                 <div class="showcase-content container">
                     <span class="showcase-index">02 / 03</span>
+                    <div class="category-tags">
+                        <span class="category-tag">Vidéo</span>
+                        <span class="category-tag">Son</span>
+                    </div>
                     <h2 class="showcase-title">Tuyo</h2>
                     <p class="showcase-desc">Exercice de montage d'une minute : recomposer des séquences de trois films différents en une seule histoire rythmée.</p>
                     <a href="./projet-2.html" class="btn btn-primary showcase-link">Voir le projet &rarr;</a>
@@ -69,7 +84,7 @@
                 <span class="showcase-scroll-hint">Continuer à défiler</span>
             </article>
 
-            <article class="showcase-panel reveal">
+            <article class="showcase-panel reveal" data-categories="ux-ui">
                 <div class="showcase-media media-frame">
                     <div class="card-slideshow" aria-hidden="true">
                         <img src="./assets/images/chocs-marees/splash.png" alt="" loading="lazy" decoding="async">
@@ -80,11 +95,16 @@
                 <div class="showcase-overlay"></div>
                 <div class="showcase-content container">
                     <span class="showcase-index">03 / 03</span>
+                    <div class="category-tags">
+                        <span class="category-tag">UX/UI</span>
+                    </div>
                     <h2 class="showcase-title">Chocs &amp; Marées</h2>
                     <p class="showcase-desc">Application mobile complète pour un festival de films documentaires en Gaspésie : programmation, billetterie, hébergement et communauté.</p>
                     <a href="./projet-3.html" class="btn btn-primary showcase-link">Voir le projet &rarr;</a>
                 </div>
             </article>
+
+            <p class="filter-empty">Aucun projet dans cette catégorie pour l'instant — d'autres arrivent bientôt.</p>
         </div>
     </main>
 
