@@ -987,30 +987,6 @@ p {
   background: rgba(255, 90, 31, 0.08);
 }
 
-.filter-btn {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  background: transparent;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.filter-btn:hover {
-  background: rgba(255, 90, 31, 0.12);
-}
-
-.filter-btn.is-active {
-  background: var(--color-accent);
-  color: #fff;
-}
-
 .realisation-category {
   margin-top: 4rem;
 }
@@ -1036,10 +1012,6 @@ p {
 
 .category-more {
   padding-block: 2.5rem 0;
-}
-
-.category-more-grid[hidden] {
-  display: none;
 }
 
 .gallery-section {

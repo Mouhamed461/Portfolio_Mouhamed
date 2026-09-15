@@ -50,21 +50,4 @@ document.addEventListener("DOMContentLoaded", () => {
       revealElements.forEach((el) => observer.observe(el));
     }
   }
-
-  const moreButtons = document.querySelectorAll(".category-more-btn");
-
-  moreButtons.forEach((btn) => {
-    const grid = document.getElementById(btn.dataset.target);
-    if (!grid) return;
-
-    const label = btn.textContent.trim();
-
-    btn.addEventListener("click", () => {
-      const isExpanded = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!isExpanded));
-      btn.classList.toggle("is-active", !isExpanded);
-      grid.hidden = isExpanded;
-      btn.textContent = isExpanded ? label : "Masquer les autres projets";
-    });
-  });
 });
