@@ -61,6 +61,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: var(--font-sans);
   color: var(--color-text);
   background: var(--color-bg);
@@ -408,6 +409,7 @@ p {
   letter-spacing: 0.005em;
   max-width: 56rem;
   line-height: 0.92;
+  overflow-wrap: break-word;
 }
 
 .hero-title em {
@@ -511,6 +513,7 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.01em;
   line-height: 0.95;
+  overflow-wrap: break-word;
 }
 
 .feature-gallery {
@@ -703,6 +706,7 @@ p {
   text-transform: uppercase;
   line-height: 0.95;
   color: #fff;
+  overflow-wrap: break-word;
 }
 
 .showcase-desc {
