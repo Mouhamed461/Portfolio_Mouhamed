@@ -533,6 +533,12 @@ p {
   }
 }
 
+.feature-gallery-footer {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
 .feature-card {
   position: relative;
   border-radius: 0.5rem;
@@ -656,22 +662,12 @@ p {
   }
 }
 
-.project-showcase {
-  display: flex;
-  flex-direction: column;
-  margin-top: 3rem;
-}
-
 .showcase-panel {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: flex-end;
-  scroll-snap-align: start;
   border-top: 1px solid var(--color-border);
-}
-
-.showcase-panel:last-child {
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -693,13 +689,6 @@ p {
 .showcase-content {
   position: relative;
   padding-block: 3rem 4rem;
-}
-
-.showcase-index {
-  font-family: var(--font-mono);
-  font-size: 0.9375rem;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.65);
 }
 
 .showcase-content .category-tags {
@@ -726,18 +715,6 @@ p {
 
 .showcase-link {
   margin-top: 2rem;
-}
-
-.showcase-scroll-hint {
-  position: absolute;
-  right: 1.5rem;
-  bottom: 2.5rem;
-  writing-mode: vertical-rl;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
 }
 
 .media-frame {
@@ -1010,13 +987,6 @@ p {
   background: rgba(255, 90, 31, 0.08);
 }
 
-.category-filter {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.625rem;
-}
-
 .filter-btn {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -1041,23 +1011,35 @@ p {
   color: #fff;
 }
 
-.showcase-panel.is-filtered-out {
-  display: none;
+.realisation-category {
+  margin-top: 4rem;
 }
 
-.filter-empty {
-  display: none;
-  min-height: 40vh;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 3rem 1.5rem;
+.realisation-category:first-of-type {
+  margin-top: 3rem;
+}
+
+.realisation-category-title {
+  margin-bottom: 1.5rem;
+}
+
+.realisation-category--empty {
+  margin-top: 3rem;
+  padding-block: 1.5rem 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.category-empty-text {
+  margin-top: 0.75rem;
   color: var(--color-text-muted);
-  font-size: 1.0625rem;
 }
 
-.filter-empty.is-visible {
-  display: flex;
+.category-more {
+  padding-block: 2.5rem 0;
+}
+
+.category-more-grid[hidden] {
+  display: none;
 }
 
 .gallery-section {

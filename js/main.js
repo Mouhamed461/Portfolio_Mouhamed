@@ -51,28 +51,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const showcasePanels = document.querySelectorAll(".showcase-panel");
-  const filterEmpty = document.querySelector(".filter-empty");
+  const moreButtons = document.querySelectorAll(".category-more-btn");
 
-  if (filterButtons.length > 0 && showcasePanels.length > 0) {
-    filterButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const filter = btn.dataset.filter;
-        filterButtons.forEach((b) => b.classList.toggle("is-active", b === btn));
+  moreButtons.forEach((btn) => {
+    const grid = document.getElementById(btn.dataset.target);
+    if (!grid) return;
 
-        let visibleCount = 0;
-        showcasePanels.forEach((panel) => {
-          const categories = (panel.dataset.categories || "").split(" ");
-          const matches = filter === "all" || categories.includes(filter);
-          panel.classList.toggle("is-filtered-out", !matches);
-          if (matches) visibleCount += 1;
-        });
+    const label = btn.textContent.trim();
 
-        if (filterEmpty) {
-          filterEmpty.classList.toggle("is-visible", visibleCount === 0);
-        }
-      });
+    btn.addEventListener("click", () => {
+      const isExpanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!isExpanded));
+      btn.classList.toggle("is-active", !isExpanded);
+      grid.hidden = isExpanded;
+      btn.textContent = isExpanded ? label : "Masquer les autres projets";
     });
-  }
+  });
 });
