@@ -9,6 +9,7 @@
   --color-placeholder: #8a8a8f;
     --color-accent: #ff5a1f;
   --color-accent-alt: #00c2d1;
+  --color-accent-2: #8b5cf6;
   --max-width: 88rem;
   --max-width-narrow: 48rem;
   --header-h: 4.5rem;
@@ -982,9 +983,9 @@ p {
   text-transform: uppercase;
   padding: 0.3rem 0.75rem;
   border-radius: 999px;
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  background: rgba(255, 90, 31, 0.08);
+  border: 1px solid var(--color-accent-2);
+  color: var(--color-accent-2);
+  background: rgba(139, 92, 246, 0.1);
 }
 
 .category-tabs {
@@ -1002,19 +1003,19 @@ p {
   text-transform: uppercase;
   padding: 0.5rem 1rem;
   border-radius: 999px;
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
+  border: 1px solid var(--color-accent-2);
+  color: var(--color-accent-2);
   background: transparent;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .category-tab:hover {
-  background: rgba(255, 90, 31, 0.12);
+  background: rgba(139, 92, 246, 0.14);
 }
 
 .category-tab.is-active {
-  background: var(--color-accent);
+  background: var(--color-accent-2);
   color: #fff;
 }
 
