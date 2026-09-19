@@ -50,4 +50,44 @@ document.addEventListener("DOMContentLoaded", () => {
       revealElements.forEach((el) => observer.observe(el));
     }
   }
+
+  const categoryTabs = document.querySelectorAll(".category-tab");
+  const realisationsGrid = document.querySelector(".realisations-grid");
+  const realisationsCards = document.querySelectorAll(".realisations-grid .feature-card");
+  const filterEmpty = document.querySelector(".filter-empty");
+
+  if (categoryTabs.length > 0 && realisationsGrid && realisationsCards.length > 0) {
+    const applyFilter = (filter) => {
+      let visibleCount = 0;
+      realisationsCards.forEach((card) => {
+        const categories = (card.dataset.categories || "").split(" ");
+        const matches = filter === "all" || categories.includes(filter);
+        card.hidden = !matches;
+        if (matches) visibleCount += 1;
+      });
+      if (filterEmpty) {
+        filterEmpty.classList.toggle("is-visible", visibleCount === 0);
+      }
+    };
+
+    categoryTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        if (tab.classList.contains("is-active")) return;
+        const filter = tab.dataset.filter;
+        categoryTabs.forEach((t) => t.classList.toggle("is-active", t === tab));
+
+        if (prefersReducedMotion) {
+          applyFilter(filter);
+        } else {
+          realisationsGrid.classList.add("is-filtering");
+          setTimeout(() => {
+            applyFilter(filter);
+            requestAnimationFrame(() => {
+              realisationsGrid.classList.remove("is-filtering");
+            });
+          }, 300);
+        }
+      });
+    });
+  }
 });
