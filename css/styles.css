@@ -793,7 +793,7 @@ p {
 .ui-mosaic {
   position: relative;
   margin-top: 2rem;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 4;
   border-radius: 1.5rem;
   background: var(--color-accent-alt);
   overflow: hidden;
@@ -801,7 +801,40 @@ p {
 
 @media (min-width: 640px) {
   .ui-mosaic {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (min-width: 960px) {
+  .ui-mosaic {
     aspect-ratio: 16 / 8;
+  }
+}
+
+@media (max-width: 639px) {
+  .ui-mosaic-screen--1 {
+    width: 46%;
+    left: 4%;
+    top: 8%;
+  }
+
+  .ui-mosaic-screen--2 {
+    width: 38%;
+    left: auto;
+    right: 6%;
+    top: 4%;
+  }
+
+  .ui-mosaic-screen--3 {
+    width: 40%;
+    right: auto;
+    left: 18%;
+    top: 46%;
+  }
+
+  .ui-mosaic-screen--4,
+  .ui-mosaic-screen--5 {
+    display: none;
   }
 }
 
@@ -1076,6 +1109,51 @@ p {
 
 .gallery-item {
   aspect-ratio: 4 / 3;
+}
+
+.browser-frame {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1.25rem 2.5rem -1rem rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item.browser-frame {
+  aspect-ratio: auto;
+}
+
+.browser-frame-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.9rem;
+  background: #232325;
+}
+
+.browser-frame-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.browser-frame-dot--red {
+  background: #ff5f57;
+}
+
+.browser-frame-dot--yellow {
+  background: #febc2e;
+}
+
+.browser-frame-dot--green {
+  background: #28c840;
+}
+
+.browser-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .project-pagination {
