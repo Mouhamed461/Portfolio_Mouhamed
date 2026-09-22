@@ -90,4 +90,47 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  const zoomableImages = document.querySelectorAll(
+    ".browser-frame img, .ui-mosaic-screen img, .ui-screen img"
+  );
+
+  if (zoomableImages.length > 0) {
+    const overlay = document.createElement("div");
+    overlay.className = "lightbox-overlay";
+    overlay.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="Fermer">&times;</button><img src="" alt="">';
+    document.body.appendChild(overlay);
+
+    const overlayImg = overlay.querySelector("img");
+    const closeBtn = overlay.querySelector(".lightbox-close");
+
+    const openLightbox = (src, alt) => {
+      overlayImg.src = src;
+      overlayImg.alt = alt || "";
+      overlay.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeLightbox = () => {
+      overlay.classList.remove("is-open");
+      document.body.style.overflow = "";
+    };
+
+    zoomableImages.forEach((img) => {
+      img.addEventListener("click", () => openLightbox(img.src, img.alt));
+    });
+
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) closeLightbox();
+    });
+
+    closeBtn.addEventListener("click", closeLightbox);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && overlay.classList.contains("is-open")) {
+        closeLightbox();
+      }
+    });
+  }
 });
