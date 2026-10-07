@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("a[href]").forEach((link) => {
+    if (link.protocol.startsWith("http") && link.hostname !== window.location.hostname) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+  });
+
   const toggle = document.getElementById("menu-toggle");
   const nav = document.getElementById("primary-nav");
 
