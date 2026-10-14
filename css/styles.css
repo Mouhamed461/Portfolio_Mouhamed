@@ -1484,3 +1484,72 @@ p {
   gap: 1rem;
   margin-top: 1.5rem;
 }
+
+/* ===== Téléphone : corrections de responsivité ===== */
+@media (max-width: 639px) {
+  /* Hero : le lecteur YouTube affiche ses boutons sur mobile -> image fixe à la place */
+  .hero-video-frame iframe {
+    display: none;
+  }
+
+  .hero-video-frame {
+    background: #121212 url("https://i.ytimg.com/vi/UN4DQEzHpaE/hqdefault.jpg") center / cover no-repeat;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 13vw, 3.5rem);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Cartes de projets : le texte passe sous l'image au lieu de la recouvrir */
+  .feature-card {
+    background: var(--color-surface, #1c1c1c);
+  }
+
+  .feature-card .media-frame,
+  .feature-card:first-child .media-frame {
+    aspect-ratio: 16 / 10;
+  }
+
+  .feature-card-overlay {
+    display: none;
+  }
+
+  .feature-card-info {
+    position: static;
+    padding: 1rem 1.125rem 1.25rem;
+  }
+
+  .feature-card-desc {
+    max-width: none;
+  }
+
+  .feature-card:hover .media-frame {
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Vidéo hébergée (page projet) */
+.project-video {
+  margin-top: 2rem;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--color-border);
+  background: #000;
+}
+
+.project-video video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
