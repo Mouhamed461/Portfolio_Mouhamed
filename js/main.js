@@ -98,6 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  if (categoryTabs.length > 0 && window.location.hash) {
+    const wanted = document.querySelector('.category-tab[data-filter="' + window.location.hash.slice(1) + '"]');
+    if (wanted) wanted.click();
+  }
+
   const zoomableImages = document.querySelectorAll(
     ".browser-frame img, .ui-mosaic-screen img, .ui-screen img"
   );
