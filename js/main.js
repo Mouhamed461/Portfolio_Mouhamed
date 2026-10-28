@@ -83,6 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const filter = tab.dataset.filter;
         categoryTabs.forEach((t) => t.classList.toggle("is-active", t === tab));
 
+        try {
+          sessionStorage.setItem("portfolio-filtre", filter);
+          history.replaceState(null, "", filter === "all" ? window.location.pathname : "#" + filter);
+        } catch (e) {}
+
         if (prefersReducedMotion) {
           applyFilter(filter);
         } else {
@@ -101,6 +106,18 @@ document.addEventListener("DOMContentLoaded", () => {
   if (categoryTabs.length > 0 && window.location.hash) {
     const wanted = document.querySelector('.category-tab[data-filter="' + window.location.hash.slice(1) + '"]');
     if (wanted) wanted.click();
+  }
+
+  const backLinks = document.querySelectorAll('.back-link[href$="realisations.html"]');
+  if (backLinks.length > 0) {
+    try {
+      const saved = sessionStorage.getItem("portfolio-filtre");
+      if (saved && saved !== "all") {
+        backLinks.forEach((link) => {
+          link.href = "./realisations.html#" + saved;
+        });
+      }
+    } catch (e) {}
   }
 
   const zoomableImages = document.querySelectorAll(
