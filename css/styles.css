@@ -1835,3 +1835,5 @@ body { -webkit-font-smoothing: antialiased; }
 @media (prefers-reduced-motion: reduce) {
   .back-link .nav-arrow, .pagination-link .nav-arrow, .back-link > span, .pagination-link > span { transition: none; transform: none !important; }
 }
+
+#projets { scroll-margin-top: var(--header-h); }

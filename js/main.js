@@ -108,16 +108,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if (wanted) wanted.click();
   }
 
+  const getStore = (key) => { try { return sessionStorage.getItem(key); } catch (e) { return null; } };
+  const setStore = (key, value) => { try { sessionStorage.setItem(key, value); } catch (e) {} };
+
+  if (document.querySelector(".hero-band")) setStore("portfolio-origine", "accueil");
+  if (document.querySelector(".realisations-grid")) setStore("portfolio-origine", "realisations");
+
   const backLinks = document.querySelectorAll('.back-link[href$="realisations.html"]');
   if (backLinks.length > 0) {
-    try {
-      const saved = sessionStorage.getItem("portfolio-filtre");
-      if (saved && saved !== "all") {
-        backLinks.forEach((link) => {
-          link.href = "./realisations.html#" + saved;
-        });
+    const origin = getStore("portfolio-origine");
+    const saved = getStore("portfolio-filtre");
+    backLinks.forEach((link) => {
+      if (origin === "accueil") {
+        link.href = "./index.html#projets";
+        const label = link.querySelector("span:last-child");
+        if (label) label.textContent = "Retour à l'accueil";
+      } else if (saved && saved !== "all") {
+        link.href = "./realisations.html#" + saved;
       }
-    } catch (e) {}
+    });
   }
 
   const zoomableImages = document.querySelectorAll(
