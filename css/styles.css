@@ -1819,3 +1819,19 @@ body { -webkit-font-smoothing: antialiased; }
 .hero-band .hero-media figcaption { color: #9a978d; }
 .hero { padding-block: calc(var(--header-h) + 2.5rem) 3.5rem; }
 @media (min-width: 900px) { .hero { padding-block: calc(var(--header-h) + 3.5rem) 4.5rem; } }
+
+/* Retour : la flèche glisse vers la gauche, le texte suit légèrement */
+.back-link .nav-arrow,
+.pagination-link .nav-arrow { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+.back-link > span:last-child,
+.pagination-link > span:not(.nav-arrow) { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+.back-link:hover .nav-arrow--left,
+.pagination-link--prev:hover .nav-arrow--left { transform: translateX(-5px); }
+.back-link:hover > span:last-child,
+.pagination-link--prev:hover > span:not(.nav-arrow) { transform: translateX(-2px); }
+.pagination-link--next:hover .nav-arrow--right { transform: translateX(5px); }
+.pagination-link--next:hover > span:not(.nav-arrow) { transform: translateX(2px); }
+.back-link:active .nav-arrow--left { transform: translateX(-7px); }
+@media (prefers-reduced-motion: reduce) {
+  .back-link .nav-arrow, .pagination-link .nav-arrow, .back-link > span, .pagination-link > span { transition: none; transform: none !important; }
+}
