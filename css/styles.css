@@ -1803,3 +1803,19 @@ body { -webkit-font-smoothing: antialiased; }
 
 .ui-mosaic-screen.reveal,
 .ui-mosaic-screen.reveal.is-visible { transform: none; }
+
+/* Bande sombre « cinéma » derrière le showreel */
+.hero-band {
+  background: #121214;
+  color: #f6f4ef;
+  border-bottom: 1px solid #000;
+}
+.hero-band .hero-title { color: #f6f4ef; }
+.hero-band .hero-eyebrow { color: #b9b6ac; }
+.hero-band .hero-subtitle { color: #d8d5cb; }
+.hero-band .text-link { color: #f6f4ef; border-bottom-color: #f6f4ef; }
+.hero-band .text-link:hover { color: #ff8a5c; border-color: #ff8a5c; }
+.hero-band .hero-video { border-radius: 2px; box-shadow: 0 0 0 1px #2a2a2e, 0 1.5rem 3rem -1rem rgba(0, 0, 0, 0.8); }
+.hero-band .hero-media figcaption { color: #9a978d; }
+.hero { padding-block: calc(var(--header-h) + 2.5rem) 3.5rem; }
+@media (min-width: 900px) { .hero { padding-block: calc(var(--header-h) + 3.5rem) 4.5rem; } }
