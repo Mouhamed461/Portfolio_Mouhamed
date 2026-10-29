@@ -1,0 +1,55 @@
+# Envoie le portfolio sur le serveur du cégep (dev.timmatane.ca) à chaque modification de la branche main.
+# Remplace l'envoi manuel avec FileZilla.
+# Identifiants à ajouter une seule fois dans GitHub : Settings > Secrets and variables > Actions
+#   FTP_USERNAME : ton nom d'utilisateur FTP (le même que dans FileZilla)
+#   FTP_PASSWORD : ton mot de passe FTP
+name: Envoi vers le serveur du cégep
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: envoi-cegep
+  cancel-in-progress: false
+
+jobs:
+  envoi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérifier que les identifiants FTP sont configurés
+        id: verif
+        env:
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          if [ -z "$FTP_USERNAME" ] || [ -z "$FTP_PASSWORD" ]; then
+            echo "Identifiants FTP absents : ajoute FTP_USERNAME et FTP_PASSWORD dans les secrets du dépôt. Envoi ignoré."
+            echo "pret=non" >> "$GITHUB_OUTPUT"
+          else
+            echo "pret=oui" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Récupérer le code
+        if: steps.verif.outputs.pret == 'oui'
+        uses: actions/checkout@v4
+
+      - name: Envoyer les fichiers par FTP
+        if: steps.verif.outputs.pret == 'oui'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.timmatane.ca
+          port: 21
+          protocol: ftp
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /portfolio/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            .claude/**
+            **/node_modules/**
+            README.md
