@@ -41,7 +41,7 @@ jobs:
         with:
           server: ftp.timmatane.ca
           port: 21
-          protocol: ftp
+          protocol: ftps
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
