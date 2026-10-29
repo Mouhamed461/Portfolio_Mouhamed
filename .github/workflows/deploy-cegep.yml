@@ -5,9 +5,9 @@
 #   FTP_PASSWORD : ton mot de passe FTP
 name: Envoi vers le serveur du cégep
 
+# Envoi automatique désactivé : le serveur du cégep refuse la connexion depuis GitHub.
+# Utiliser outils/envoyer_portfolio.bat depuis l'ordinateur. Lancement manuel encore possible.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -56,5 +56,6 @@ jobs:
             **/.git*/**
             .github/**
             .claude/**
+            outils/**
             **/node_modules/**
             README.md
