@@ -29,6 +29,11 @@ jobs:
             echo "pret=non" >> "$GITHUB_OUTPUT"
           else
             echo "pret=oui" >> "$GITHUB_OUTPUT"
+            # Diagnostic sans révéler les secrets : longueurs et espaces parasites seulement
+            echo "Longueur de FTP_USERNAME : ${#FTP_USERNAME} (attendu : 23)"
+            echo "Longueur de FTP_PASSWORD : ${#FTP_PASSWORD}"
+            [ "$FTP_USERNAME" = "dioufm@dev.timmatane.ca" ] && echo "FTP_USERNAME : identique à l'identifiant attendu" || echo "FTP_USERNAME : différent de dioufm@dev.timmatane.ca"
+            case "$FTP_PASSWORD" in *" "*|*$'\t'*|*$'\r'*|*$'\n'*) echo "FTP_PASSWORD : contient une espace ou un retour à la ligne";; *) echo "FTP_PASSWORD : aucune espace";; esac
           fi
 
       - name: Récupérer le code
@@ -41,7 +46,7 @@ jobs:
         with:
           server: ftp.timmatane.ca
           port: 21
-          protocol: ftps
+          protocol: ftp
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
