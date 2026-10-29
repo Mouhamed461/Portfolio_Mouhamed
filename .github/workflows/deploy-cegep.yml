@@ -30,10 +30,10 @@ jobs:
           else
             echo "pret=oui" >> "$GITHUB_OUTPUT"
             # Diagnostic sans révéler les secrets : longueurs et espaces parasites seulement
-            echo "Longueur de FTP_USERNAME : ${#FTP_USERNAME} (attendu : 23)"
-            echo "Longueur de FTP_PASSWORD : ${#FTP_PASSWORD}"
-            [ "$FTP_USERNAME" = "dioufm@dev.timmatane.ca" ] && echo "FTP_USERNAME : identique à l'identifiant attendu" || echo "FTP_USERNAME : différent de dioufm@dev.timmatane.ca"
-            case "$FTP_PASSWORD" in *" "*|*$'\t'*|*$'\r'*|*$'\n'*) echo "FTP_PASSWORD : contient une espace ou un retour à la ligne";; *) echo "FTP_PASSWORD : aucune espace";; esac
+            echo "::notice::Longueur de FTP_USERNAME : ${#FTP_USERNAME} (attendu : 23)"
+            echo "::notice::Longueur de FTP_PASSWORD : ${#FTP_PASSWORD}"
+            [ "$FTP_USERNAME" = "dioufm@dev.timmatane.ca" ] && echo "::notice::FTP_USERNAME : identique à l'identifiant attendu" || echo "::notice::FTP_USERNAME : différent de dioufm@dev.timmatane.ca"
+            case "$FTP_PASSWORD" in *" "*|*$'\t'*|*$'\r'*|*$'\n'*) echo "::notice::FTP_PASSWORD : contient une espace ou un retour à la ligne";; *) echo "::notice::FTP_PASSWORD : aucune espace";; esac
           fi
 
       - name: Récupérer le code
