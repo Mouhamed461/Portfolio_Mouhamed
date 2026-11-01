@@ -1903,3 +1903,25 @@ body { -webkit-font-smoothing: antialiased; }
   .hero-title { font-size: clamp(2.4rem, 4.1vw, 3.7rem); white-space: normal; }
   .hero-media { margin-top: 0; }
 }
+
+/* Titres sobres, façon générique de film : Barlow Semi Condensed */
+:root { --font-titre: "Barlow Semi Condensed", "Arial Narrow", Arial, sans-serif; }
+.hero-title,
+.section-title,
+.page-title,
+.feature-card-title,
+.showcase-title,
+.trio-title,
+.logo {
+  font-stretch: normal;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.logo { font-size: 1.0625rem; letter-spacing: 0.03em; }
+.hero-title { font-size: clamp(2.5rem, 12vw, 4rem); line-height: 1.02; }
+.section-title { font-size: clamp(1.625rem, 3vw, 2rem); line-height: 1.1; }
+.page-title { font-size: clamp(2.25rem, 6vw, 3.25rem); line-height: 1.05; }
+.feature-card-title, .trio-title { font-size: 1.1875rem; letter-spacing: 0.02em; line-height: 1.2; }
+@media (min-width: 900px) {
+  .hero-title { font-size: clamp(3rem, 4.6vw, 4rem); white-space: normal; }
+}
