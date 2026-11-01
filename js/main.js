@@ -155,10 +155,24 @@ document.addEventListener("DOMContentLoaded", () => {
       heroVideo.pause();
     }
     majPause();
+
+    const heroPleinEcran = document.getElementById("hero-plein-ecran");
+    if (heroPleinEcran) {
+      heroPleinEcran.addEventListener("click", () => {
+        if (heroVideo.requestFullscreen) {
+          heroVideo.requestFullscreen().catch(() => {});
+        } else if (heroVideo.webkitEnterFullscreen) {
+          heroVideo.webkitEnterFullscreen();
+        }
+      });
+      document.addEventListener("fullscreenchange", () => {
+        heroVideo.controls = document.fullscreenElement === heroVideo;
+      });
+    }
   }
 
   const zoomableImages = document.querySelectorAll(
-    ".browser-frame img, .ui-mosaic-screen img, .ui-screen img"
+    ".browser-frame img, .ui-mosaic-screen img, .ui-screen img, .process-photo img"
   );
 
   if (zoomableImages.length > 0) {
@@ -168,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
       '<button type="button" class="lightbox-close" aria-label="Fermer">&times;</button><img src="" alt="">';
     document.body.appendChild(overlay);
 
+    let dernierDeclencheur = null;
     const overlayImg = overlay.querySelector("img");
     const closeBtn = overlay.querySelector(".lightbox-close");
 
@@ -176,15 +191,30 @@ document.addEventListener("DOMContentLoaded", () => {
       overlayImg.alt = alt || "";
       overlay.classList.add("is-open");
       document.body.style.overflow = "hidden";
+      closeBtn.focus();
     };
 
     const closeLightbox = () => {
       overlay.classList.remove("is-open");
       document.body.style.overflow = "";
+      if (dernierDeclencheur) dernierDeclencheur.focus();
     };
 
     zoomableImages.forEach((img) => {
-      img.addEventListener("click", () => openLightbox(img.src, img.alt));
+      img.addEventListener("click", () => {
+        dernierDeclencheur = img;
+        openLightbox(img.src, img.alt);
+      });
+      img.tabIndex = 0;
+      img.setAttribute("role", "button");
+      img.setAttribute("aria-label", "Agrandir : " + (img.alt || "image"));
+      img.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          dernierDeclencheur = img;
+          openLightbox(img.src, img.alt);
+        }
+      });
     });
 
     overlay.addEventListener("click", (event) => {
