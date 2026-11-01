@@ -1837,3 +1837,55 @@ body { -webkit-font-smoothing: antialiased; }
 }
 
 #projets { scroll-margin-top: var(--header-h); }
+
+/* ===== Typographie : Archivo Expanded pour les titres, Inter pour les textes ===== */
+:root { --font-titre: "Archivo", "Arial Narrow", Arial, sans-serif; }
+.hero-title,
+.section-title,
+.page-title,
+.feature-card-title,
+.showcase-title,
+.trio-title,
+.logo {
+  font-family: var(--font-titre);
+  font-stretch: 125%;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+.logo { font-size: 0.9375rem; font-weight: 700; letter-spacing: 0; }
+.hero-title { font-size: clamp(2.6rem, 10.5vw, 6.5rem); line-height: 0.98; max-width: none; }
+.section-title { font-size: clamp(1.5rem, 3.6vw, 2.4rem); line-height: 1.08; }
+.page-title { font-size: clamp(1.8rem, 8.4vw, 4rem); line-height: 1.02; }
+.feature-card-title { font-size: 1rem; font-weight: 700; line-height: 1.2; letter-spacing: 0; }
+.trio-title { font-size: 1rem; font-weight: 700; letter-spacing: 0; }
+@media (min-width: 900px) {
+  .hero-title { font-size: clamp(4.5rem, 7.2vw, 6.5rem); }
+}
+
+/* Haut de l'accueil : nom, métier et stage, puis la vidéo sur toute la largeur */
+.hero { display: block; padding-block: calc(var(--header-h) + 2.5rem) 3rem; }
+.hero-role { margin-top: 1rem; font-size: clamp(1.125rem, 2.4vw, 1.5rem); font-weight: 500; color: #f6f4ef; }
+.hero-band .hero-subtitle { margin-top: 0.5rem; max-width: 40rem; }
+.hero-stage { margin-top: 1rem; font-size: 1.0625rem; font-weight: 600; color: #ff8a5c; }
+.hero-media { margin-top: 2.5rem; width: 100%; }
+@media (min-width: 900px) {
+  .hero { display: block; padding-block: calc(var(--header-h) + 3.5rem) 4rem; }
+}
+
+/* Dates de stage dans À propos */
+.stage-note { margin-top: 1rem; font-size: 1.125rem; font-weight: 600; color: var(--color-accent); }
+
+/* Ligne d'infos sur chaque projet */
+.project-infos { display: flex; flex-wrap: wrap; gap: 0.75rem 2.5rem; margin: 1.25rem 0 0; padding-block: 0.875rem; border-block: 1px solid var(--color-border); }
+.project-infos dt { font-size: 0.8125rem; color: var(--color-text-subtle); }
+.project-infos dd { margin: 0.125rem 0 0; font-size: 0.9375rem; font-weight: 500; color: var(--color-text); }
+
+/* Nom jamais coupé au milieu d'un mot, sur une ligne à partir de 900 px */
+.hero-title { font-size: clamp(1.9rem, 10vw, 6.5rem); overflow-wrap: normal; }
+@media (min-width: 900px) {
+  .hero-title { font-size: clamp(3.4rem, 6.2vw, 5.6rem); white-space: nowrap; }
+}
+.header-cta { white-space: nowrap; }
+.back-link + .page-title { margin-top: 1.25rem; }

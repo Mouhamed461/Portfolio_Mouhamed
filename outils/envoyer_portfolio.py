@@ -16,6 +16,8 @@ DOSSIER_DISTANT = "/portfolio"
 
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ETAT = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".dernier_envoi.json")
+# Anciens contenus retirés du site : à effacer aussi sur le serveur.
+RETIRES = ["projet-9.html", "assets/images/medteck", "assets/images/derniers-messages"]
 EXCLUS = {".git", ".github", ".claude", "outils", "node_modules", "README.md", ".gitignore", ".gitattributes"}
 
 
@@ -43,6 +45,28 @@ def creer_dossiers(ftp, chemin_relatif, deja_crees):
         deja_crees.add(courant)
 
 
+def effacer(ftp, chemin):
+    """Efface un fichier ou un dossier distant. Sans effet s'il n'existe plus."""
+    try:
+        ftp.delete(chemin)
+        return True
+    except ftplib.error_perm:
+        pass
+    try:
+        contenu = ftp.nlst(chemin)
+    except ftplib.error_perm:
+        return False
+    for element in contenu:
+        nom = element.rsplit("/", 1)[-1]
+        if nom not in (".", ".."):
+            effacer(ftp, chemin + "/" + nom)
+    try:
+        ftp.rmd(chemin)
+        return True
+    except ftplib.error_perm:
+        return False
+
+
 def main():
     try:
         with open(ETAT, encoding="utf-8") as f:
@@ -57,7 +81,8 @@ def main():
         if etat.get(relatif) != signature:
             a_envoyer.append((relatif, chemin, signature))
 
-    if not a_envoyer:
+    a_retirer = [r for r in RETIRES if r not in etat.get("__retires__", [])]
+    if not a_envoyer and not a_retirer:
         print("Rien de nouveau à envoyer : le serveur est déjà à jour.")
         return
 
@@ -85,6 +110,10 @@ def main():
             etat[relatif] = signature
             envoyes += 1
             print(f"  [{envoyes}/{len(a_envoyer)}] {relatif}")
+        for relatif in a_retirer:
+            if effacer(ftp, f"{DOSSIER_DISTANT}/{relatif}"):
+                print(f"  Retiré du serveur : {relatif}")
+            etat.setdefault("__retires__", []).append(relatif)
     finally:
         with open(ETAT, "w", encoding="utf-8") as f:
             json.dump(etat, f, indent=1)
