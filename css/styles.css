@@ -1957,3 +1957,6 @@ body { -webkit-font-smoothing: antialiased; }
 .hero-controles .hero-pause { position: static; }
 
 .project-pagination { margin-bottom: 3rem; }
+
+/* À propos : pas de ligne sous le bouton du CV */
+.section--sans-filet { border-top: 0; }
