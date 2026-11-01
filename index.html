@@ -51,6 +51,7 @@
     <main>
         <div class="hero-band">
         <section class="hero container">
+            <div class="hero-copy">
             <h1 class="hero-title">Mouhamed Diouf</h1>
             <p class="hero-role">Étudiant en intégration multimédia : vidéo, son et web.</p>
             <p class="hero-subtitle">Je raconte des histoires en vidéo : documentaire, motion design et projets interactifs.</p>
@@ -59,11 +60,15 @@
                 <a href="./realisations.html" class="btn btn-primary">Voir les réalisations</a>
                 <a href="#contact" class="text-link">Me contacter</a>
             </div>
+            </div>
             <figure class="hero-media">
                 <div class="hero-video">
-                    <iframe src="https://www.youtube.com/embed/UN4DQEzHpaE?rel=0&modestbranding=1&playsinline=1" title="Le Joola - court métrage documentaire" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+                    <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="./assets/images/hero-joola-poster.jpg" aria-label="Extrait sans son du court métrage Le Joola">
+                        <source src="./assets/videos/hero-joola.mp4" type="video/mp4">
+                    </video>
+                    <button type="button" class="hero-pause" id="hero-pause" aria-pressed="false" aria-label="Mettre la vidéo en pause">Pause</button>
                 </div>
-                <figcaption>Le Joola, court métrage documentaire</figcaption>
+                <figcaption><a href="./projet-1.html" class="text-link">Voir Le Joola en entier, avec le son</a></figcaption>
             </figure>
         </section>
         </div>

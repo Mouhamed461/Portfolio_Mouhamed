@@ -129,6 +129,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const heroVideo = document.getElementById("hero-video");
+  const heroPause = document.getElementById("hero-pause");
+
+  if (heroVideo && heroPause) {
+    const majPause = () => {
+      const enPause = heroVideo.paused;
+      heroPause.textContent = enPause ? "Lecture" : "Pause";
+      heroPause.setAttribute("aria-label", enPause ? "Lancer la vidéo" : "Mettre la vidéo en pause");
+      heroPause.setAttribute("aria-pressed", String(enPause));
+    };
+
+    heroVideo.addEventListener("play", majPause);
+    heroVideo.addEventListener("pause", majPause);
+    heroPause.addEventListener("click", () => {
+      if (heroVideo.paused) {
+        heroVideo.play().catch(majPause);
+      } else {
+        heroVideo.pause();
+      }
+    });
+
+    if (prefersReducedMotion) {
+      heroVideo.removeAttribute("autoplay");
+      heroVideo.pause();
+    }
+    majPause();
+  }
+
   const zoomableImages = document.querySelectorAll(
     ".browser-frame img, .ui-mosaic-screen img, .ui-screen img"
   );
