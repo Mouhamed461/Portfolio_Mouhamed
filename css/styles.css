@@ -1925,3 +1925,7 @@ body { -webkit-font-smoothing: antialiased; }
 @media (min-width: 900px) {
   .hero-title { font-size: clamp(3rem, 4.6vw, 4rem); white-space: normal; }
 }
+
+/* LinkedIn dans le pied de page */
+.footer-link { color: var(--color-text); border-bottom: 1px solid var(--color-text-subtle); align-self: flex-start; }
+.footer-link:hover { color: var(--color-accent); border-color: var(--color-accent); }
