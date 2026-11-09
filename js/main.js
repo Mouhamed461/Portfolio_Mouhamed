@@ -166,65 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Générique du nom (accueil) : une fois par visite, jamais si la personne a demandé moins d'animations.
-  const heroTitre = document.querySelector(".hero-title");
-  const dejaVu = getStore("portfolio-generique");
-  if (heroTitre && !prefersReducedMotion && !dejaVu && heroTitre.animate) {
-    setStore("portfolio-generique", "1");
-    // Le titre reste caché le temps que la police arrive, pour que le générique se mesure sur la bonne taille.
-    heroTitre.style.clipPath = "inset(-20% 100% -20% 0)";
-    const policePrete = document.fonts
-      ? document.fonts.load('600 1em "Barlow Semi Condensed"').catch(() => {})
-      : Promise.resolve();
-    const auPlusTard = new Promise((r) => setTimeout(r, 700));
-    Promise.race([policePrete, auPlusTard]).then(() => {
-      heroTitre.style.clipPath = "";
-      const tete = document.createElement("span");
-      tete.className = "generique-tete";
-      tete.setAttribute("aria-hidden", "true");
-      const tc = document.createElement("span");
-      tc.className = "generique-tc";
-      tete.appendChild(tc);
-      // La tête de lecture vit à côté du titre (pas dedans), sinon elle serait coupée avec lui.
-      const parent = heroTitre.parentElement;
-      if (getComputedStyle(parent).position === "static") parent.style.position = "relative";
-      tete.style.top = (heroTitre.offsetTop - heroTitre.offsetHeight * 0.12) + "px";
-      tete.style.height = (heroTitre.offsetHeight * 1.2) + "px";
-      tete.style.left = heroTitre.offsetLeft + "px";
-      parent.appendChild(tete);
-
-      const duree = 1400;
-      // Largeur du texte lui-même (pas de la boîte du titre), pour que la tête s'arrête sur la dernière lettre.
-      const plage = document.createRange();
-      plage.selectNodeContents(heroTitre);
-      const gauche = heroTitre.getBoundingClientRect().left;
-      const largeur = Math.max(...Array.from(plage.getClientRects(), (r) => r.right)) - gauche;
-      const ease = "cubic-bezier(0.65, 0, 0.35, 1)";
-      heroTitre.animate(
-        [{ clipPath: "inset(-20% 100% -20% 0)" }, { clipPath: "inset(-20% 0 -20% 0)" }],
-        { duration: duree, easing: ease, fill: "backwards" }
-      );
-      tete.animate(
-        [{ transform: "translateX(0)" }, { transform: "translateX(" + largeur + "px)" }],
-        { duration: duree, easing: ease, fill: "forwards" }
-      );
-
-      const debut = performance.now();
-      const image = (t) => {
-        const ecoule = Math.min(t - debut, duree);
-        const images = Math.round((ecoule / 1000) * 30);
-        const ii = (n) => String(n).padStart(2, "0");
-        tc.textContent = "00:00:" + ii(Math.floor(images / 30)) + ":" + ii(images % 30);
-        if (ecoule < duree) requestAnimationFrame(image);
-        else {
-          tete.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 500, delay: 250, fill: "forwards" })
-            .finished.then(() => tete.remove());
-        }
-      };
-      requestAnimationFrame(image);
-    });
-  }
-
   const heroVideo = document.getElementById("hero-video");
   const heroPause = document.getElementById("hero-pause");
 

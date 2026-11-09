@@ -1920,6 +1920,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-v
 .contact-courriel .contact-link { white-space: nowrap; }
 @media (max-width: 400px) { .contact-courriel { flex-wrap: wrap; } }
 
+
+/* Contact : bouton Copier sur la même ligne que l'adresse (il passe dessous seulement sur très petit écran) */
+.contact-courriel { flex-wrap: nowrap; }
+.contact-courriel .contact-link { white-space: nowrap; }
+@media (max-width: 400px) { .contact-courriel { flex-wrap: wrap; } }
+
 /* ===== Générique du nom : une tête de lecture balaie le titre, avec un timecode ===== */
 .generique-tete { position: absolute; width: 2px; z-index: 2; background: #ff8a5c; box-shadow: 0 0 12px rgba(255, 138, 92, 0.7); pointer-events: none; }
 .generique-tete::before { content: ""; position: absolute; top: -6px; left: -5px; border: 6px solid transparent; border-top: 8px solid #ff8a5c; border-bottom: 0; }

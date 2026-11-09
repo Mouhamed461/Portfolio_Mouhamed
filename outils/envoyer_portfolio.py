@@ -31,6 +31,25 @@ def fichiers_a_envoyer():
             yield os.path.relpath(chemin, RACINE).replace("\\", "/"), chemin
 
 
+def connecter(mot_de_passe):
+    """Se connecte comme FileZilla : FTP chiffré (TLS) si le serveur l'accepte, sinon FTP simple."""
+    try:
+        ftp = ftplib.FTP_TLS(SERVEUR, timeout=60)
+        ftp.encoding = "utf-8"
+        ftp.login(IDENTIFIANT, mot_de_passe)
+        ftp.prot_p()
+        return ftp
+    except ftplib.error_perm as erreur:
+        if str(erreur).startswith("530"):
+            raise  # mot de passe ou identifiant refusé : inutile de réessayer sans chiffrement
+    except (OSError, ftplib.Error):
+        pass
+    ftp = ftplib.FTP(SERVEUR, timeout=60)
+    ftp.encoding = "utf-8"
+    ftp.login(IDENTIFIANT, mot_de_passe)
+    return ftp
+
+
 def creer_dossiers(ftp, chemin_relatif, deja_crees):
     parties = chemin_relatif.split("/")[:-1]
     courant = DOSSIER_DISTANT
@@ -87,17 +106,23 @@ def main():
         return
 
     print(f"{len(a_envoyer)} fichier(s) à envoyer vers {SERVEUR}{DOSSIER_DISTANT}.")
-    mot_de_passe = getpass.getpass(f"Mot de passe FTP pour {IDENTIFIANT} (rien ne s'affiche, c'est normal) : ")
+    print("Pour coller le mot de passe dans cette fenêtre : clic droit (Ctrl+V ne marche pas toujours ici).")
 
-    try:
-        ftp = ftplib.FTP(SERVEUR, timeout=60)
-        ftp.encoding = "utf-8"
-        ftp.login(IDENTIFIANT, mot_de_passe)
-    except ftplib.error_perm as erreur:
-        print(f"Connexion refusée : {erreur}. Vérifie le mot de passe.")
-        return
-    except OSError as erreur:
-        print(f"Impossible de joindre le serveur : {erreur}")
+    ftp = None
+    for essai in range(3):
+        mot_de_passe = getpass.getpass(f"Mot de passe FTP pour {IDENTIFIANT} (rien ne s'affiche, c'est normal) : ").strip()
+        try:
+            ftp = connecter(mot_de_passe)
+            break
+        except ftplib.error_perm as erreur:
+            print(f"Connexion refusée : {erreur}")
+            if essai < 2:
+                print("Le serveur refuse ce mot de passe. Réessaie (même mot de passe que dans FileZilla).")
+        except OSError as erreur:
+            print(f"Impossible de joindre le serveur : {erreur}")
+            return
+    if ftp is None:
+        print("Trois refus de suite : vérifie le mot de passe dans FileZilla, ou envoie les fichiers à la main.")
         return
 
     deja_crees = set()
