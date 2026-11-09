@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
     }
+    if (link.target === "_blank" && !link.querySelector(".sr-only")) {
+      const note = document.createElement("span");
+      note.className = "sr-only";
+      note.textContent = " (nouvel onglet)";
+      link.appendChild(note);
+    }
   });
 
   const toggle = document.getElementById("menu-toggle");
@@ -75,13 +81,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (filterEmpty) {
         filterEmpty.classList.toggle("is-visible", visibleCount === 0);
       }
+      const annonce = document.getElementById("filtre-annonce");
+      if (annonce) {
+        annonce.textContent = visibleCount + (visibleCount > 1 ? " projets affichés" : " projet affiché");
+      }
     };
 
     categoryTabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         if (tab.classList.contains("is-active")) return;
         const filter = tab.dataset.filter;
-        categoryTabs.forEach((t) => t.classList.toggle("is-active", t === tab));
+        categoryTabs.forEach((t) => {
+          t.classList.toggle("is-active", t === tab);
+          t.setAttribute("aria-pressed", String(t === tab));
+        });
 
         try {
           sessionStorage.setItem("portfolio-filtre", filter);
@@ -124,8 +137,91 @@ document.addEventListener("DOMContentLoaded", () => {
         const label = link.querySelector("span:last-child");
         if (label) label.textContent = "Retour à l'accueil";
       } else if (saved && saved !== "all") {
-        link.href = "./realisations.html#" + saved;
+        // On ne revient au filtre que si ce projet en fait partie ; sinon, on revient à « Tous ».
+        const categories = (link.dataset.categories || "").split(" ");
+        if (categories.includes(saved)) link.href = "./realisations.html#" + saved;
       }
+    });
+  }
+
+  document.querySelectorAll(".copy-btn").forEach((btn) => {
+    const statut = btn.parentElement.querySelector(".copy-statut");
+    btn.addEventListener("click", async () => {
+      const texte = btn.dataset.copy;
+      try {
+        await navigator.clipboard.writeText(texte);
+        if (statut) statut.textContent = "Adresse copiée";
+      } catch (e) {
+        const lien = btn.parentElement.querySelector("a");
+        if (lien) {
+          const range = document.createRange();
+          range.selectNodeContents(lien);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+        if (statut) statut.textContent = "Adresse sélectionnée : Ctrl+C pour la copier";
+      }
+      setTimeout(() => { if (statut) statut.textContent = ""; }, 4000);
+    });
+  });
+
+  // Générique du nom (accueil) : une fois par visite, jamais si la personne a demandé moins d'animations.
+  const heroTitre = document.querySelector(".hero-title");
+  const dejaVu = getStore("portfolio-generique");
+  if (heroTitre && !prefersReducedMotion && !dejaVu && heroTitre.animate) {
+    setStore("portfolio-generique", "1");
+    // Le titre reste caché le temps que la police arrive, pour que le générique se mesure sur la bonne taille.
+    heroTitre.style.clipPath = "inset(-20% 100% -20% 0)";
+    const policePrete = document.fonts
+      ? document.fonts.load('600 1em "Barlow Semi Condensed"').catch(() => {})
+      : Promise.resolve();
+    const auPlusTard = new Promise((r) => setTimeout(r, 700));
+    Promise.race([policePrete, auPlusTard]).then(() => {
+      heroTitre.style.clipPath = "";
+      const tete = document.createElement("span");
+      tete.className = "generique-tete";
+      tete.setAttribute("aria-hidden", "true");
+      const tc = document.createElement("span");
+      tc.className = "generique-tc";
+      tete.appendChild(tc);
+      // La tête de lecture vit à côté du titre (pas dedans), sinon elle serait coupée avec lui.
+      const parent = heroTitre.parentElement;
+      if (getComputedStyle(parent).position === "static") parent.style.position = "relative";
+      tete.style.top = (heroTitre.offsetTop - heroTitre.offsetHeight * 0.12) + "px";
+      tete.style.height = (heroTitre.offsetHeight * 1.2) + "px";
+      tete.style.left = heroTitre.offsetLeft + "px";
+      parent.appendChild(tete);
+
+      const duree = 1400;
+      // Largeur du texte lui-même (pas de la boîte du titre), pour que la tête s'arrête sur la dernière lettre.
+      const plage = document.createRange();
+      plage.selectNodeContents(heroTitre);
+      const gauche = heroTitre.getBoundingClientRect().left;
+      const largeur = Math.max(...Array.from(plage.getClientRects(), (r) => r.right)) - gauche;
+      const ease = "cubic-bezier(0.65, 0, 0.35, 1)";
+      heroTitre.animate(
+        [{ clipPath: "inset(-20% 100% -20% 0)" }, { clipPath: "inset(-20% 0 -20% 0)" }],
+        { duration: duree, easing: ease, fill: "backwards" }
+      );
+      tete.animate(
+        [{ transform: "translateX(0)" }, { transform: "translateX(" + largeur + "px)" }],
+        { duration: duree, easing: ease, fill: "forwards" }
+      );
+
+      const debut = performance.now();
+      const image = (t) => {
+        const ecoule = Math.min(t - debut, duree);
+        const images = Math.round((ecoule / 1000) * 30);
+        const ii = (n) => String(n).padStart(2, "0");
+        tc.textContent = "00:00:" + ii(Math.floor(images / 30)) + ":" + ii(images % 30);
+        if (ecoule < duree) requestAnimationFrame(image);
+        else {
+          tete.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 500, delay: 250, fill: "forwards" })
+            .finished.then(() => tete.remove());
+        }
+      };
+      requestAnimationFrame(image);
     });
   }
 
@@ -178,6 +274,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (zoomableImages.length > 0) {
     const overlay = document.createElement("div");
     overlay.className = "lightbox-overlay";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-label", "Image agrandie");
     overlay.innerHTML =
       '<button type="button" class="lightbox-close" aria-label="Fermer">&times;</button><img src="" alt="">';
     document.body.appendChild(overlay);
@@ -224,8 +323,12 @@ document.addEventListener("DOMContentLoaded", () => {
     closeBtn.addEventListener("click", closeLightbox);
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && overlay.classList.contains("is-open")) {
+      if (!overlay.classList.contains("is-open")) return;
+      if (event.key === "Escape") {
         closeLightbox();
+      } else if (event.key === "Tab") {
+        event.preventDefault();
+        closeBtn.focus();
       }
     });
   }

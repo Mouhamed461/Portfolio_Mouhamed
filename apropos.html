@@ -24,6 +24,7 @@
     <link href="./css/styles.css" rel="stylesheet">
 </head>
 <body>
+    <a href="#contenu" class="skip-link">Aller au contenu</a>
     <header class="site-header">
         <div class="header-inner container">
             <a href="./index.html" class="logo">Mouhamed Diouf</a>
@@ -32,7 +33,7 @@
                     <li><a href="./index.html" class="nav-link">Accueil</a></li>
                     <li><a href="./realisations.html" class="nav-link">Réalisations</a></li>
                     <li><a href="./apropos.html" class="nav-link active" aria-current="page">À propos</a></li>
-                    <li><a href="./assets/cv/CV_Mouhamed_Diouf.pdf?v=5" class="nav-link" target="_blank" rel="noopener">Mon CV</a></li>
+                    <li><a href="./assets/cv/CV_Mouhamed_Diouf.pdf?v=6" class="nav-link" target="_blank" rel="noopener">Mon CV</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -46,7 +47,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="contenu" tabindex="-1">
         <section class="page-header container">
             <h1 class="page-title">À propos</h1>
             <p class="stage-note">Je cherche un stage du 15 mars au 21 mai 2027.</p>
@@ -63,7 +64,7 @@
             </div>
 
             <div class="about-cv">
-                <a href="./assets/cv/CV_Mouhamed_Diouf.pdf?v=5" class="btn btn-primary" download>Télécharger mon CV (PDF)</a>
+                <a href="./assets/cv/CV_Mouhamed_Diouf.pdf?v=6" class="btn btn-primary" download>Télécharger mon CV (PDF)</a>
             </div>
         </section>
 
@@ -157,9 +158,10 @@
                         <p class="contact-intro">
                             Un projet en tête ou une question ? Écrivez-moi.
                         </p>
+                        <a href="./assets/cv/CV_Mouhamed_Diouf.pdf?v=6" class="btn btn-primary contact-cv" target="_blank" rel="noopener">Voir mon CV</a>
                     </div>
                     <ul class="contact-list reveal">
-                        <li><a href="mailto:dioufmouhamed461@gmail.com" class="contact-link"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#icon-email"></use></svg> dioufmouhamed461@gmail.com</a></li>
+                        <li class="contact-courriel"><a href="mailto:dioufmouhamed461@gmail.com" class="contact-link"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#icon-email"></use></svg> dioufmouhamed461@gmail.com</a> <button type="button" class="copy-btn" data-copy="dioufmouhamed461@gmail.com" aria-label="Copier l'adresse courriel">Copier</button><span class="copy-statut" role="status"></span></li>
                         <li><a href="https://www.linkedin.com/in/mouhamed-diouf-multimedia/" class="contact-link" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#icon-linkedin"></use></svg> LinkedIn</a></li>
                         <li><a href="tel:+15812327228" class="contact-link"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#icon-phone"></use></svg> +1 581 232 7228</a></li>
                     </ul>
