@@ -193,6 +193,73 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     majPause();
 
+    // Bande démo à parcourir : un segment par plan, regroupés par projet.
+    const piste = document.getElementById("demo-piste");
+    const zoneSegments = document.getElementById("demo-segments");
+    if (piste && zoneSegments) {
+      const PROJETS = {
+        joola: { nom: "Le Joola", page: "./projet-1.html" },
+        carter: { nom: "Teaser Jack Carter", page: "./projet-12.html" },
+        journee: { nom: "La mauvaise journée", page: "./projet-13.html" },
+        narmer: { nom: "Narmer & Ménès", page: "./projet-5.html" },
+        bateau: { nom: "Bateau", page: "./projet-4.html" },
+      };
+      // [projet, durée en secondes], dans l'ordre du montage
+      const PLANS = [
+        ["joola", 2.5], ["carter", 2], ["journee", 2.5], ["joola", 2.5], ["carter", 2], ["narmer", 2.5], ["joola", 2.5],
+        ["carter", 2.5], ["journee", 2.5], ["bateau", 3], ["carter", 2], ["joola", 2.5], ["narmer", 1],
+      ];
+      const TOTAL = PLANS.reduce((somme, plan) => somme + plan[1], 0);
+      const lien = document.getElementById("demo-lien");
+      const temps = document.getElementById("demo-temps");
+      const mmss = (t) => "00:" + String(Math.floor(t)).padStart(2, "0");
+
+      let debut = 0;
+      const segments = PLANS.map(([cle, duree]) => {
+        const bouton = document.createElement("button");
+        bouton.type = "button";
+        bouton.className = "demo-segment demo-segment--" + cle;
+        bouton.style.flexGrow = String(duree);
+        bouton.dataset.debut = String(debut);
+        bouton.dataset.fin = String(debut + duree);
+        bouton.dataset.projet = cle;
+        bouton.setAttribute("aria-label", PROJETS[cle].nom + ", à " + mmss(debut));
+        bouton.title = PROJETS[cle].nom;
+        const remplissage = document.createElement("span");
+        remplissage.className = "demo-remplissage";
+        bouton.appendChild(remplissage);
+        bouton.addEventListener("click", () => {
+          heroVideo.currentTime = Number(bouton.dataset.debut) + 0.05;
+          mettreAJour();
+        });
+        zoneSegments.appendChild(bouton);
+        debut += duree;
+        return bouton;
+      });
+
+      const mettreAJour = () => {
+        const t = Math.min(heroVideo.currentTime || 0, TOTAL);
+        temps.textContent = mmss(t) + " / " + mmss(TOTAL);
+        segments.forEach((bouton) => {
+          const d = Number(bouton.dataset.debut);
+          const f = Number(bouton.dataset.fin);
+          const part = Math.max(0, Math.min(1, (t - d) / (f - d)));
+          bouton.firstChild.style.transform = "scaleX(" + part + ")";
+          const actif = t >= d && t < f;
+          bouton.classList.toggle("is-actif", actif);
+          if (actif && lien.dataset.projet !== bouton.dataset.projet) {
+            lien.dataset.projet = bouton.dataset.projet;
+            lien.textContent = PROJETS[bouton.dataset.projet].nom;
+            lien.href = PROJETS[bouton.dataset.projet].page;
+          }
+        });
+      };
+      heroVideo.addEventListener("timeupdate", mettreAJour);
+      heroVideo.addEventListener("seeked", mettreAJour);
+      piste.hidden = false;
+      mettreAJour();
+    }
+
     const heroPleinEcran = document.getElementById("hero-plein-ecran");
     if (heroPleinEcran) {
       heroPleinEcran.addEventListener("click", () => {
