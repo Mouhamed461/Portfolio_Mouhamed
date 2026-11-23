@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const zoomableImages = document.querySelectorAll(
-    ".browser-frame img, .ui-mosaic-screen img, .ui-screen img, .process-photo img"
+    ".browser-frame img, .ui-mosaic-screen img, .ui-screen img, .process-photo img, .coulisses-photo img"
   );
 
   if (zoomableImages.length > 0) {
