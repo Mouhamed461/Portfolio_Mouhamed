@@ -17,7 +17,7 @@ DOSSIER_DISTANT = "/portfolio"
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ETAT = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".dernier_envoi.json")
 # Anciens contenus retirés du site : à effacer aussi sur le serveur.
-RETIRES = ["projet-9.html", "assets/images/medteck", "assets/images/derniers-messages", "assets/videos/teaser-jack-carter.mp4", "projet-2.html", "assets/images/tuyo"]
+RETIRES = ["projet-9.html", "assets/images/medteck", "assets/images/derniers-messages", "assets/videos/teaser-jack-carter.mp4", "projet-2.html", "assets/images/tuyo", "assets/videos/hero-joola.mp4", "assets/images/hero-joola-poster.jpg"]
 EXCLUS = {".git", ".github", ".claude", "outils", "node_modules", "README.md", ".gitignore", ".gitattributes"}
 
 
