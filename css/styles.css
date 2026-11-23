@@ -1962,19 +1962,3 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-v
 .demo-temps { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.8125rem; font-variant-numeric: tabular-nums; color: #9a978d; }
 .hero-band .demo-etat .text-link { font-size: 0.875rem; }
 
-/* Parcours, de Dakar à Matane (À propos) */
-.parcours { margin-top: 3rem; }
-.parcours-etapes { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 0; }
-.parcours-etapes li { position: relative; display: grid; align-content: start; gap: 0.125rem; padding: 0 0 1.75rem 1.75rem; border-left: 2px solid var(--color-border); }
-.parcours-etapes li:last-child { padding-bottom: 0; border-left-color: transparent; }
-.parcours-etapes li::before { content: ""; position: absolute; left: -7px; top: 0.25rem; width: 12px; height: 12px; border-radius: 50%; background: var(--color-bg); border: 2px solid var(--color-accent); }
-.parcours-etapes li:last-child::before { background: var(--color-accent); }
-.parcours-date { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text-muted); }
-.parcours-lieu { font-size: 1.125rem; font-weight: 600; color: var(--color-text); }
-.parcours-texte { color: var(--color-text-body); line-height: 1.5; max-width: 28rem; }
-@media (min-width: 900px) {
-  .parcours-etapes { grid-template-columns: repeat(4, 1fr); }
-  .parcours-etapes li { padding: 1.75rem 1.5rem 0 0; border-left: 0; border-top: 2px solid var(--color-border); }
-  .parcours-etapes li:last-child { border-top-color: var(--color-border); }
-  .parcours-etapes li::before { left: 0; top: -7px; }
-}

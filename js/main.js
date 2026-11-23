@@ -206,8 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       // [projet, durée en secondes], dans l'ordre du montage
       const PLANS = [
-        ["joola", 2.5], ["carter", 2], ["journee", 2.5], ["joola", 2.5], ["carter", 2], ["narmer", 2.5], ["joola", 2.5],
-        ["carter", 2.5], ["journee", 2.5], ["bateau", 3], ["carter", 2], ["joola", 2.5], ["narmer", 1],
+        ["joola", 3], ["carter", 2], ["journee", 2.5], ["joola", 2.5], ["carter", 2], ["narmer", 2.5],
+        ["joola", 2.5], ["carter", 2.5], ["journee", 2.5], ["bateau", 3], ["carter", 2], ["joola", 3],
       ];
       const TOTAL = PLANS.reduce((somme, plan) => somme + plan[1], 0);
       const lien = document.getElementById("demo-lien");
