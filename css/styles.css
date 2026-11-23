@@ -1922,11 +1922,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-v
 
 
 /* Coulisses : le scénarimage au-dessus du plan final */
-.coulisses-grille { display: grid; grid-template-columns: 1fr; gap: 2rem 1.25rem; margin-top: 1.5rem; }
-.coulisses-case { margin: 0; min-width: 0; display: grid; gap: 0.5rem; }
+.coulisses-grille { display: grid; grid-template-columns: 1fr; gap: 2rem 1.25rem; margin-top: 1.5rem; align-items: start; }
+.coulisses-case { margin: 0; min-width: 0; display: grid; gap: 0.5rem; align-content: start; }
 .coulisses-photo { border: 1px solid var(--color-border); border-radius: 0.25rem; overflow: hidden; background: var(--color-surface); }
 .coulisses-photo img { display: block; width: 100%; height: auto; cursor: zoom-in; }
 .coulisses-photo img:focus-visible { outline: 3px solid var(--color-accent); outline-offset: -3px; }
 .coulisses-case figcaption { font-size: 0.875rem; color: var(--color-text-muted); }
 .coulisses-case figcaption strong { color: var(--color-text); font-weight: 600; margin-right: 0.375rem; }
 @media (min-width: 900px) { .coulisses-grille { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .coulisses-grille--2 { grid-template-columns: repeat(2, 1fr); } }
