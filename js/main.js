@@ -219,16 +219,44 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.setAttribute("aria-modal", "true");
     overlay.setAttribute("aria-label", "Image agrandie");
     overlay.innerHTML =
-      '<button type="button" class="lightbox-close" aria-label="Fermer">&times;</button><img src="" alt="">';
+      '<button type="button" class="lightbox-close" aria-label="Fermer">&times;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-nav--prev" aria-label="Image précédente" hidden>&#8592;</button>' +
+      '<img src="" alt="">' +
+      '<button type="button" class="lightbox-nav lightbox-nav--next" aria-label="Image suivante" hidden>&#8594;</button>' +
+      '<p class="lightbox-compte" aria-live="polite" hidden></p>';
     document.body.appendChild(overlay);
 
     let dernierDeclencheur = null;
     const overlayImg = overlay.querySelector("img");
     const closeBtn = overlay.querySelector(".lightbox-close");
+    const prevBtn = overlay.querySelector(".lightbox-nav--prev");
+    const nextBtn = overlay.querySelector(".lightbox-nav--next");
+    const compte = overlay.querySelector(".lightbox-compte");
+    let groupe = [];
+    let position = 0;
 
-    const openLightbox = (src, alt) => {
-      overlayImg.src = src;
-      overlayImg.alt = alt || "";
+    // Les images d'une même grille forment un groupe qu'on peut parcourir.
+    const groupeDe = (img) => {
+      const parent = img.closest(".coulisses-grille, .process-grille");
+      if (!parent) return [img];
+      return Array.from(zoomableImages).filter((autre) => parent.contains(autre));
+    };
+
+    const afficher = (index) => {
+      position = (index + groupe.length) % groupe.length;
+      const img = groupe[position];
+      overlayImg.src = img.currentSrc || img.src;
+      overlayImg.alt = img.alt || "";
+      const plusieurs = groupe.length > 1;
+      prevBtn.hidden = !plusieurs;
+      nextBtn.hidden = !plusieurs;
+      compte.hidden = !plusieurs;
+      compte.textContent = plusieurs ? (position + 1) + " / " + groupe.length : "";
+    };
+
+    const openLightbox = (img) => {
+      groupe = groupeDe(img);
+      afficher(groupe.indexOf(img));
       overlay.classList.add("is-open");
       document.body.style.overflow = "hidden";
       closeBtn.focus();
@@ -243,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
     zoomableImages.forEach((img) => {
       img.addEventListener("click", () => {
         dernierDeclencheur = img;
-        openLightbox(img.src, img.alt);
+        openLightbox(img);
       });
       img.tabIndex = 0;
       img.setAttribute("role", "button");
@@ -252,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
           dernierDeclencheur = img;
-          openLightbox(img.src, img.alt);
+          openLightbox(img);
         }
       });
     });
@@ -262,14 +290,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     closeBtn.addEventListener("click", closeLightbox);
+    prevBtn.addEventListener("click", () => afficher(position - 1));
+    nextBtn.addEventListener("click", () => afficher(position + 1));
 
     document.addEventListener("keydown", (event) => {
       if (!overlay.classList.contains("is-open")) return;
       if (event.key === "Escape") {
         closeLightbox();
+      } else if (event.key === "ArrowLeft" && groupe.length > 1) {
+        afficher(position - 1);
+      } else if (event.key === "ArrowRight" && groupe.length > 1) {
+        afficher(position + 1);
       } else if (event.key === "Tab") {
+        // Le clavier reste dans la visionneuse : Fermer, Précédent, Suivant.
         event.preventDefault();
-        closeBtn.focus();
+        const boutons = [closeBtn, prevBtn, nextBtn].filter((b) => !b.hidden);
+        const i = boutons.indexOf(document.activeElement);
+        const suivant = event.shiftKey ? i - 1 : i + 1;
+        boutons[(suivant + boutons.length) % boutons.length].focus();
       }
     });
   }

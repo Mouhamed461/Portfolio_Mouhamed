@@ -1932,3 +1932,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-v
 @media (min-width: 900px) { .coulisses-grille { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 900px) { .coulisses-grille--2 { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 900px) { .coulisses-grille--1 { grid-template-columns: 1fr; } }
+
+/* Visionneuse : passer d'une image à l'autre */
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 3rem; height: 3rem; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(20, 20, 22, 0.7); color: #fff; font-size: 1.25rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.lightbox-nav:hover { background: rgba(255, 255, 255, 0.18); }
+.lightbox-nav--prev { left: 0.75rem; }
+.lightbox-nav--next { right: 0.75rem; }
+.lightbox-compte { position: absolute; bottom: 0.875rem; left: 50%; transform: translateX(-50%); margin: 0; font-size: 0.875rem; color: #fff; font-variant-numeric: tabular-nums; }
+.lightbox-overlay button:focus-visible { outline: 3px solid #ff8a5c; outline-offset: 2px; }
