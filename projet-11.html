@@ -153,29 +153,6 @@
                 </div>
             </div>
 
-            <section class="process-section" aria-labelledby="code">
-                <h2 class="section-title" id="code">Un extrait du code</h2>
-                <p class="process-aide">Le globe calcule la distance parcourue par le téléphone et devient plus gris à chaque étape du voyage. Je l'ai codé avec Philippe, avec D3.js.</p>
-                <figure class="code-extrait">
-                    <pre tabindex="0" aria-label="Extrait de code JavaScript"><code>// Distance du voyage jusqu&#x27;à l&#x27;étape donnée, de lieu en lieu
-// par le plus court chemin sur la sphère.
-function kilometres(etape) {
-  const codes = lieuxParcourus(etape);
-  let total = 0;
-  for (let rang = 1; rang &lt; codes.length; rang++) {
-    total += d3.geoDistance(LIEUX[codes[rang - 1]].coord, LIEUX[codes[rang]].coord) * RAYON_TERRE_KM;
-  }
-  return Math.round(total);
-}
-
-// Niveau de gris de la planète : il augmente à chaque étape.
-function degradationDeLEtape(etape) {
-  return (etape / NOMBRE_ETAPES) * DEGRADATION_MAX;
-}</code></pre>
-                    <figcaption>Tiré de <code>js/globe.js</code>. <a href="https://github.com/Mouhamed461/pineapple" class="text-link" target="_blank" rel="noopener">Voir tout le code sur GitHub</a></figcaption>
-                </figure>
-            </section>
-
             <nav class="project-pagination" aria-label="Navigation entre projets">
                 <a href="./projet-10.html" class="pagination-link pagination-link--prev"><span class="nav-arrow nav-arrow--left" aria-hidden="true"></span><span>Projet précédent</span></a>
                 <a href="./projet-13.html" class="pagination-link pagination-link--next"><span>Projet suivant</span><span class="nav-arrow nav-arrow--right" aria-hidden="true"></span></a>
@@ -185,7 +162,7 @@ function degradationDeLEtape(etape) {
 
     <footer class="site-footer">
         <div class="footer-inner container">
-            <p>&copy; 2026 Mouhamed Diouf</p><a href="https://www.linkedin.com/in/mouhamed-diouf-multimedia/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <p>&copy; 2026 Mouhamed Diouf. Site fait en HTML, CSS et JavaScript, sans gabarit. <a href="https://github.com/Mouhamed461/Portfolio_Mouhamed" class="footer-link" target="_blank" rel="noopener noreferrer">Voir le code</a></p><a href="https://www.linkedin.com/in/mouhamed-diouf-multimedia/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
     </footer>
 
