@@ -1834,7 +1834,9 @@ body { -webkit-font-smoothing: antialiased;
 }
 
 /* LinkedIn dans le pied de page */
-.footer-link { color: var(--color-text); border-bottom: 1px solid var(--color-text-subtle); align-self: flex-start;
+.footer-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-text); border-bottom: 1px solid var(--color-text-subtle); align-self: flex-start;
+}
+.footer-link .icon { width: 1.125rem; height: 1.125rem; flex: none;
 }
 .footer-link:hover { color: var(--color-accent); border-color: var(--color-accent);
 }
